@@ -297,12 +297,14 @@ export default{
   async scheduled(ev,env,ctx){ctx.waitUntil(ev.cron&&ev.cron.startsWith('*/10')?chainCron(env):ev.cron&&ev.cron.startsWith('2-57/5')?forwardStep(env):cron(env));}
 };
 
-/* ===== ENGINE v11.2 — auto-extracted from index.html (FAM Flow) on 2026-11-02T21:52:37.859Z — don't edit here: edit the page and re-download ===== */
+/* ===== ENGINE v11.3 — auto-extracted from index.html (FAM Flow) on 2026-11-03T13:50:54.251Z — don't edit here: edit the page and re-download ===== */
 const ENGINE=(()=>{
-const W_DEFAULT={"delta":22,"trend":15,"div":15,"oi":15,"flow":12,"fund":10,"sf":10,"taker":8,"ob":6,"top":6,"liq":5,"news":5,"fng":4,"prem":6,"xfund":6,"rot":6,"chain":6,"whale":6,"macro":4};const W_NAME={"delta":"ضغط الـ market orders (Delta 10 شمعات)","trend":"الترند والهيكل (EMA + MTF)","div":"Divergence سعر/Delta","oi":"OI مع السعر","flow":"تدفّق السيولة 1h/4h (Spot+Fut)","fund":"Funding rate","sf":"Spot vs Futures (تدفّق 24h)","taker":"Taker Buy/Sell (Futures)","ob":"Order book imbalance","top":"كبار المتداولين vs العامة","liq":"Liquidations (session)","news":"نبرة الأخبار (آخر 6 ساعات)","fng":"Fear & Greed","prem":"Coinbase premium (طلب أميركي)","xfund":"Funding عبر البورصات (مرجّح بالـ OI)","rot":"التدوير — المال داخل على هالعملة نسبةً للسوق","chain":"تدفّقات البورصات on-chain (ستيبل داخل vs كريبتو داخل)","whale":"الحيتان — صفقات كبيرة آخر ساعة (شراء vs بيع)","macro":"مزاج الماكرو (الدولار، العوائد، VIX، S&P، النفط) — على 4h/1d والذهب بس"};const activeCal=()=>null;const EV_PRE_H=2,EV_POST_H=0.5;const SCEN_KIND={"breakUp":"كسر للفوق","breakDown":"كسر للتحت","rejectUp":"رفض مقاومة","bounceDown":"ارتداد من دعم","sweepLow":"كسر كاذب (سيولة) ↑","sweepHigh":"كسر كاذب (سيولة) ↓","retestUp":"كسر + إعادة اختبار ↑","retestDown":"كسر + إعادة اختبار ↓"};
+const W_DEFAULT={"delta":22,"mom":10,"trend":15,"div":15,"oi":15,"flow":12,"fund":10,"sf":10,"taker":8,"ob":6,"top":6,"liq":5,"news":5,"fng":4,"prem":6,"xfund":6,"rot":6,"chain":6,"whale":6,"macro":4};const W_NAME={"delta":"ضغط الـ market orders (Delta 10 شمعات)","mom":"الزخم (حركة آخر 3 شموع × ATR + delta)","trend":"الترند والهيكل (EMA + MTF)","div":"Divergence سعر/Delta","oi":"OI مع السعر","flow":"تدفّق السيولة 1h/4h (Spot+Fut)","fund":"Funding rate","sf":"Spot vs Futures (تدفّق 24h)","taker":"Taker Buy/Sell (Futures)","ob":"Order book imbalance","top":"كبار المتداولين vs العامة","liq":"Liquidations (session)","news":"نبرة الأخبار (آخر 6 ساعات)","fng":"Fear & Greed","prem":"Coinbase premium (طلب أميركي)","xfund":"Funding عبر البورصات (مرجّح بالـ OI)","rot":"التدوير — المال داخل على هالعملة نسبةً للسوق","chain":"تدفّقات البورصات on-chain (ستيبل داخل vs كريبتو داخل)","whale":"الحيتان — صفقات كبيرة آخر ساعة (شراء vs بيع)","macro":"مزاج الماكرو (الدولار، العوائد، VIX، S&P، النفط) — على 4h/1d والذهب بس"};const activeCal=()=>null;const EV_PRE_H=2,EV_POST_H=0.5;const SCEN_KIND={"breakUp":"كسر للفوق","breakDown":"كسر للتحت","rejectUp":"رفض مقاومة","bounceDown":"ارتداد من دعم","sweepLow":"كسر كاذب (سيولة) ↑","sweepHigh":"كسر كاذب (سيولة) ↓","retestUp":"كسر + إعادة اختبار ↑","retestDown":"كسر + إعادة اختبار ↓"};
 const sign=n=>n>0?'+':'';
 const clamp=(v,a=-1,b=1)=>Math.max(a,Math.min(b,v));
 const fmt=(n,d=2)=>n==null||isNaN(n)?'—':Number(n).toLocaleString('en-US',{maximumFractionDigits:d});
+const fp=n=>fmt(n,n<1?5:n<100?3:2);
+const usd=n=>n==null||isNaN(n)?'—':(Math.abs(n)>=1e9?'$'+(n/1e9).toFixed(2)+'B':Math.abs(n)>=1e6?'$'+(n/1e6).toFixed(2)+'M':Math.abs(n)>=1e3?'$'+(n/1e3).toFixed(1)+'K':'$'+n.toFixed(0));
 function parseK(k){return{time:k[0]/1000,open:+k[1],high:+k[2],low:+k[3],close:+k[4],vol:+k[5],delta:2*(+k[9])-(+k[5]),ts:k[0],qv:+k[7],tbq:+k[10]};}
 function ema(arr,n){let k=2/(n+1),e=arr[0];for(let i=1;i<arr.length;i++)e=arr[i]*k+e*(1-k);return e;}
 function fRegime(cs){
@@ -325,11 +327,21 @@ function fStructure(cs){
   if(cs.length<60)return null;
   const pv=fPivots(cs,4,100),hs=pv.filter(v=>v.type==='high').slice(-2),ls=pv.filter(v=>v.type==='low').slice(-2);
   if(hs.length<2||ls.length<2)return null;
-  const hh=hs[1].p>hs[0].p,hl=ls[1].p>ls[0].p;
+  const hh=hs[1].p>hs[0].p,hl=ls[1].p>ls[0].p,last=cs[cs.length-1].close;
+  /* v11.3: الكسر الفوري — إغلاق فوق آخر قمة مؤكّدة بيقلب الهيكل فوراً (ما ننطر 4 شموع تأكيد pivot)، والعكس تحت آخر قاع */
+  if(!hh&&last>hs[1].p)return{s:0.5,label:'انقلاب صاعد (كسر آخر قمة '+fp(hs[1].p)+' — بانتظار قاع أعلى)',flip:'up'};
+  if(hl&&last<ls[1].p)return{s:-0.5,label:'انقلاب هابط (كسر آخر قاع '+fp(ls[1].p)+' — بانتظار قمة أدنى)',flip:'down'};
   if(hh&&hl)return{s:1,label:'صاعد (HH/HL)'};if(!hh&&!hl)return{s:-1,label:'هابط (LH/LL)'};
   return{s:0,label:hh?'مختلط (HH/LL — توسّع)':'مختلط (LH/HL — انضغاط)'};
 }
 function fShock(cs){if(cs.length<20)return null;const a=fAtr(cs);if(!a)return null;const mx=Math.max(...cs.slice(-2).map(c=>c.high-c.low));return mx>3*a?{mult:mx/a}:null;}
+function fThrust(cs){
+  if(cs.length<30)return null;const a=fAtr(cs);if(!a)return null;const n=cs.length;
+  for(const [k,th] of [[3,2.5],[5,3.5]]){const c0=cs[n-1-k],c1=cs[n-1];if(!c0)continue;const move=c1.close-c0.close,mult=Math.abs(move)/a;if(mult<th)continue;
+    const last=cs.slice(-k),agree=last.filter(c=>Math.sign(c.close-c.open)===Math.sign(move)).length,dsum=last.reduce((x,c)=>x+c.delta,0);
+    if(agree*2>k)return{dir:move>0?'up':'down',mult,k,delta:dsum,agree};}
+  return null;
+}
 function fAgg(cs,k){const out=[];for(let end=cs.length;end>0;end-=k){const g=cs.slice(Math.max(0,end-k),end);let h=-Infinity,l=Infinity,v=0,d=0,qv=0,tbq=0;for(const c of g){if(c.high>h)h=c.high;if(c.low<l)l=c.low;v+=c.vol;d+=c.delta;qv+=c.qv||0;tbq+=c.tbq||0;}out.unshift({open:g[0].open,high:h,low:l,close:g[g.length-1].close,vol:v,delta:d,ts:g[0].ts,qv,tbq});}return out;}
 function fMini(cs){const closes=cs.map(c=>c.close),e20=ema(closes,20),p=closes[closes.length-1];const d10=cs.slice(-10).reduce((a,c)=>a+c.delta,0),v10=cs.slice(-10).reduce((a,c)=>a+c.vol,0)||1;const s=clamp(d10/v10*4)*0.6+clamp((p-e20)/e20*40)*0.4;return{s,label:s>0.2?'صعودي':s<-0.2?'هبوطي':'محايد',p};}
 function fTrend(cs,mtf){
@@ -377,6 +389,9 @@ function fFactors(ctx){
   else if(pch>0.002&&dr>0.03){divS=0.4;divT='سعر ودلتا سوا للفوق — تأكيد';}
   else if(pch<-0.002&&dr<-0.03){divS=-0.4;divT='سعر ودلتا سوا للتحت — تأكيد';}
   add('div',divS,divT,{divS});
+  /* v11.3: الزخم — حركة آخر 3 شموع بالـ ATR مع اتجاه الـ delta: بيعادل العوامل البطيئة (EMA/الهيكل) لمّا السوق يتحرّك عمودي */
+  {const aM=fAtr(cs)||p*0.005,c3=cs[cs.length-4],l3=cs.slice(-3);if(c3){const mv=(p-c3.close)/aM,d3=l3.reduce((x,c)=>x+c.delta,0),v3=l3.reduce((x,c)=>x+c.vol,0)||1,dr3=d3/v3,agree=Math.sign(mv)===Math.sign(dr3)&&Math.abs(dr3)>0.03;let sM=clamp(mv/3);if(!agree)sM*=0.5;
+    add('mom',sM,Math.abs(mv)<0.8?'ما في زخم واضح بآخر 3 شموع':`${mv>0?'اندفاع صاعد':'اندفاع هابط'} ${Math.abs(mv).toFixed(1)}×ATR بآخر 3 شموع ${agree?'مع delta موافق — زخم حقيقي':'بس الـ delta مش موافق — زخم بلا تأكيد'}`,{mv,dr3});}}
   const tr=fTrend(cs,ctx.mtf||{});if(tr)add('trend',tr.s,tr.exp);
   const nf=fFlowFactor(ctx.flow);if(nf)add('flow',nf.s,nf.exp);
   if(ctx.ob&&(ctx.ob.bid+ctx.ob.ask)>0){const t=ctx.ob.bid+ctx.ob.ask,imb=(ctx.ob.bid-ctx.ob.ask)/t;add('ob',imb*3,imb>0.15?'طلبات الشراء أكبر قرب السعر':imb<-0.15?'عروض البيع أكبر قرب السعر':'الدفتر متوازن');}
@@ -440,6 +455,15 @@ function fPlan(c){
     }else{R.wait=true;R.verdict='انتظار — الميل محايد';R.why.push('ما في طرف مسيطر (العوامل متعادلة) — الانتظار صفقة. راقب التدفّق 1h وشمعة الإغلاق الجاية');return R;}
   }
   const m=dir==='long'?1:-1;R.dir=dir;
+  /* v11.3 — ثلاث قواعد صلبة قبل أي دخول: */
+  const WAIT=(verdict,why,extra)=>Object.assign({wait:true,verdict,why:[why],watch:R.watch||'',dirWanted:dir},extra||{});
+  /* (2) زخم صادم عكس الاتجاه → انتظار (ما منعاكس حركة عمودية) */
+  const th=c.thrust;if(th&&((th.dir==='up'&&dir==='short')||(th.dir==='down'&&dir==='long')))return WAIT('انتظار — زخم صادم عكس الاتجاه',`السعر تحرّك ${th.mult.toFixed(1)}×ATR بآخر ${th.k} شموع ${th.dir==='up'?'للفوق':'للتحت'} (${th.agree}/${th.k} شموع بنفس الاتجاه${th.delta?(th.delta>0)===(th.dir==='up')?' مع delta موافق':' بس الـ delta مش موافق':''}) — الميل ${dir==='short'?'هبوطي':'صعودي'} بس ما منعاكس زخم عمودي: انطر إغلاق شمعة عكسية أو pullback مع الاتجاه`,{thrustVeto:true});
+  /* (5) الإطار الأكبر (1h/4h) كلّو عكس الصفقة → انتظار */
+  if(c.htf){const hv=[c.htf.s1,c.htf.s4].filter(v=>v!=null);if(hv.length&&hv.every(v=>dir==='short'?v>0.12:v<-0.12))return WAIT('انتظار — عكس الإطار الأكبر',`${c.htf.s1!=null?'1h':''}${c.htf.s1!=null&&c.htf.s4!=null?' و':''}${c.htf.s4!=null?'4h':''} ${dir==='short'?'صاعدين':'هابطين'} والميل على ${tf} ${dir==='short'?'هبوطي':'صعودي'} — صفقة عكس التيار الأكبر؛ انطر توافق أو ادخل مع الإطار الأكبر على pullback`,{htfVeto:true});}
+  /* (1) السيولة: ما في بيع تحت قمم متساوية ولا شراء فوق قيعان متساوية — الستوبات هونيك والسوق بيكسرها قبل ما يعكس */
+  const liqAhead=lv.filter(l=>/متساوية/.test(l.full||l.name)&&(l.p-p)*m<0&&Math.abs(l.p-p)<=1.5*a).sort((x,y)=>Math.abs(x.p-p)-Math.abs(y.p-p))[0];
+  if(liqAhead)return WAIT(`انتظار — ${dir==='short'?'قمم':'قيعان'} متساوية (سيولة) ${fp(liqAhead.p)} ${dir==='short'?'فوق':'تحت'} السعر`,`${dir==='short'?'البيع تحت قمم متساوية':'الشراء فوق قيعان متساوية'} = الوقوف قدّام الستوبات المتجمّعة؛ السوق عادةً بيكسرها (sweep) قبل ما يعكس — ${dir==='short'?'سيناريو 🎣 الكسر الكاذب للقمة (بيع بعد الإغلاق تحتها) أو كسر حقيقي للفوق':'سيناريو 🎣 الكسر الكاذب للقاع (شراء بعد الإغلاق فوقه) أو كسر حقيقي للتحت'} هو الصح`,{liqVeto:true,liqLevel:liqAhead.p});
   if(!setup){
     const e20=c.e20,ext=(p-e20)*m;
     let entry=p,mode='market',entryName='السعر الحالي';
@@ -519,5 +543,5 @@ function fCondHit(kind,L,c,prev,avgV,a,st){
     if(st.n>12){st.broke=false;st.n=0;}return{hit:false,st};}
   return{hit:false,st};
 }
-return{v:'11.2',W_DEFAULT,W_NAME,parseK,ema,fRegime,fAtr,fSwing,fPivots,fStructure,fShock,fAgg,fMini,fTrend,fOIState,fFlowFactor,fFactors,fConf,fBias,fLevels,fPlan,planValid,fQuality,qualityScore,fCondHit,SCEN_KIND,sign,clamp,fmt};
+return{v:'11.3',W_DEFAULT,W_NAME,parseK,ema,fRegime,fAtr,fSwing,fPivots,fStructure,fShock,fThrust,fAgg,fMini,fTrend,fOIState,fFlowFactor,fFactors,fConf,fBias,fLevels,fPlan,planValid,fQuality,qualityScore,fCondHit,SCEN_KIND,sign,clamp,fmt};
 })();
