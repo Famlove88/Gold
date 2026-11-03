@@ -289,13 +289,53 @@ button:disabled{opacity:.45;cursor:not-allowed;filter:saturate(.5)}
   .flowT .rd{display:none}.flowT .fread{display:table-row}.flowT .fread td{white-space:normal!important;font-size:12px;padding-top:0;border-bottom:1px solid var(--line)}
   .flowT tbody tr.frow td{border-bottom:none}
 }
+/* v11.1: الداشبورد الاحترافي */
+.kstrip{display:grid;grid-template-columns:repeat(auto-fill,minmax(172px,1fr));gap:8px}
+.kc{position:relative;background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:12px;padding:9px 10px 8px;cursor:pointer;min-width:0;border-inline-start:3px solid var(--tc,var(--line));transition:transform .15s,border-color .15s}
+.kc:hover{transform:translateY(-1px);border-color:var(--tc,var(--blue))}
+.kc.pos{--tc:var(--green)}.kc.neg{--tc:var(--red)}.kc.neu{--tc:var(--amber)}.kc.cyan{--tc:#22d3ee}
+.kc .kl{font-size:11px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+.kc .kl i{font-style:normal;opacity:.9}
+.kc .kv{font-size:16px;font-weight:800;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--tc,var(--text));unicode-bidi:plaintext;text-align:right}
+.kc .ks{font-size:10.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px;unicode-bidi:plaintext;text-align:right}
+.kc .ksp{position:absolute;inset-inline-start:8px;top:6px;opacity:.5;pointer-events:none}
+.kc .dm{margin-top:6px}
+.dm{display:block;position:relative;height:5px;border-radius:4px;background:rgba(255,255,255,.08);min-width:60px;direction:ltr}
+.dm i{display:block;height:100%;border-radius:4px;max-width:100%}
+.dm b{position:absolute;top:-3px;width:3px;height:11px;background:#fff;border-radius:2px;transform:translateX(-50%);box-shadow:0 0 4px #000}
+.dv .dm{display:inline-block;width:70px;vertical-align:middle;margin:0 6px}
+.dr{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:12.5px;align-items:flex-start}
+.dr:last-of-type{border-bottom:none}
+.dr .dk{color:var(--muted);flex:0 0 auto;max-width:40%;line-height:1.6}
+.dr .dv{font-weight:700;text-align:left;unicode-bidi:plaintext;min-width:0;flex:1;line-height:1.6}
+.dr .dv small{font-weight:500;color:var(--muted);font-size:11px}
+.dr .dv small.sub{display:block;unicode-bidi:plaintext;text-align:left;margin-top:1px;line-height:1.5}
+.dsub{font-weight:800;font-size:13px;margin:8px 0 4px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.dck{margin-top:8px;padding:7px 9px;border-radius:9px;background:var(--panel2);font-size:12.5px}
+.dck .mini{display:block;margin-top:4px;line-height:1.6}
+.dsc{padding:7px 9px;border-radius:9px;background:var(--panel2);margin-bottom:5px;border-inline-start:3px solid var(--green)}
+.dsc.s{border-inline-start-color:var(--red)}
+.dsc .t{display:flex;justify-content:space-between;gap:8px;font-weight:700;font-size:12.5px}
+.dsc .e{font-size:11.5px;color:var(--muted);margin-top:2px;line-height:1.6}
+#dshChartCard{display:flex;flex-direction:column}#dshChart{flex:1;min-height:280px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#0f1522}
+.dlegend{display:flex;gap:10px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:6px;align-items:center}
+.dlegend i{display:inline-block;width:14px;height:2px;vertical-align:middle;margin-inline-end:4px}
+#dshTf button.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.hgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
+.hd{display:grid;grid-template-columns:10px 1fr;column-gap:7px;align-items:center;padding:5px 8px;border-radius:9px;background:var(--panel2);font-size:11.5px;min-width:0}
+.hd i{width:8px;height:8px;border-radius:50%;background:#4b5563;grid-row:span 2}
+.hd.ok i{background:var(--green)}.hd.warn i{background:var(--amber)}.hd.err i{background:var(--red)}.hd.off i,.hd.na i{background:#4b5563}
+.hd span{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hd small{color:var(--muted);font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dgrid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.dgrid2{grid-template-columns:1fr}#dshChart{min-height:220px;flex:0 0 220px}.kstrip{grid-template-columns:repeat(2,1fr)}.kc .kv{font-size:14.5px}.dr{flex-direction:column;gap:2px}.dr .dk{max-width:none}.dr .dv{text-align:right}.dr .dv small.sub{text-align:right}}
 </style>
 </head>
 <body>
 
 <div id="top">
   <div class="tb">
-    <h1>FAM <span>Flow</span> <small style="font-size:10px;color:var(--muted);font-weight:400">v11.0 PRO</small></h1>
+    <h1>FAM <span>Flow</span> <small style="font-size:10px;color:var(--muted);font-weight:400">v11.2 PRO</small></h1>
     <select id="pairSel" style="direction:ltr"></select>
     <div class="stat"><small>السعر</small><b id="tPrice">—</b></div>
     <div class="stat"><small>24h</small><b id="tChg">—</b></div>
@@ -314,7 +354,7 @@ button:disabled{opacity:.45;cursor:not-allowed;filter:saturate(.5)}
   <div class="summary" id="summary">جاري قراءة السوق…</div>
 </div>
   <div id="tabs">
-    <div class="brand">FAM <span>Flow</span><small>منصّة قراءة السوق · v11.0</small></div>
+    <div class="brand">FAM <span>Flow</span><small>منصّة قراءة السوق · v11.2</small></div>
     <button class="active pri" data-t="home">🏠 الرئيسية</button>
     <button class="pri" data-t="read">📊 القراءة</button>
     <button data-t="flow">💧 السيولة</button>
@@ -345,29 +385,55 @@ button:disabled{opacity:.45;cursor:not-allowed;filter:saturate(.5)}
       <div>
         <div class="rec" id="hRec"><div class="muted">بانتظار التوصية…</div></div>
         <div class="chips" style="margin-top:10px">
-          <button class="bestbtn" id="pickBtn" title="بيحدّث كل المصادر (أخبار، حيتان، order book، OI، macro…) وبعدين بيمسح كل الـ watchlist وبيعطيك أفضل صفقة لأفضل عملة">🎯 حدّد صفقة</button><button class="small" id="bestBtn" title="مسح على البيانات المخزّنة بلا تحديث">🏆 مسح سريع</button><button class="primary" data-go="read|recCard">🧭 التوصية الكاملة</button><button data-go="read|scenCard">🌳 السيناريوهات</button><button data-go="trade|planCard">🎯 المخطّط</button><button data-go="track|trackCard">📋 صفقاتي</button><span class="chip" id="hWatched" style="display:none"></span>
+          <button class="bestbtn" id="pickBtn" title="بيحدّث كل المصادر (أخبار، حيتان، order book، OI، macro…) وبعدين بيمسح كل الـ watchlist وبيعطيك أفضل صفقة لأفضل عملة">🎯 حدّد صفقة</button><button class="small" id="bestBtn" title="مسح على البيانات المخزّنة بلا تحديث">🏆 مسح سريع</button><button class="info" data-i="pick" title="شو الفرق بين «حدّد صفقة» و«مسح سريع»؟" style="margin-inline-start:0">i</button><button class="primary" data-go="read|recCard">🧭 التوصية الكاملة</button><button data-go="read|scenCard">🌳 السيناريوهات</button><button data-go="trade|planCard">🎯 المخطّط</button><button data-go="track|trackCard">📋 صفقاتي</button><span class="chip" id="hWatched" style="display:none"></span>
         </div>
       </div>
     </div>
   </section>
-  <section class="card c12" id="bestCard" style="display:none">
+    <section class="card c12" id="dshKpi" data-title="المؤشرات الرئيسية">
+    <div class="sec">📊 المؤشرات الرئيسية <small>نبض السوق بسطر — بتتحدّث live · كبسة على أي بطاقة بتفتح كرتها</small></div>
+    <div class="kstrip" id="dshKpis"><div class="muted">جاري القراءة…</div></div>
+  </section>
+  <section class="card c8" id="dshChartCard" data-title="الشارت الحي">
+    <div class="sec g">📈 الشارت الحي <small id="dshChartMeta">—</small></div>
+    <div class="chips" id="dshTf" style="margin-bottom:8px;gap:4px;align-items:center"><span class="mini muted" style="margin:0">الإطار:</span><button class="small" data-dtf="15m">15m</button><button class="small" data-dtf="1h">1h</button><button class="small" data-dtf="4h">4h</button><button class="small" data-dtf="1d">1d</button><button class="small primary" data-go="detail|chartCard" style="margin-inline-start:auto">🎨 الشارت الكامل + الرسم</button></div>
+    <div id="dshChart"></div>
+    <div class="dlegend" id="dshChartLegend"></div>
+  </section>
+  <section class="card c4" id="dshPlanCard" data-title="الخطة والسيناريوهات">
+    <div class="sec a">🧭 الخطة والسيناريوهات <small>التوصية + checklist + أقرب السيناريوهات</small><button class="info" data-i="checklist" style="margin-inline-start:auto;color:#fff;border-color:rgba(255,255,255,.5)">i</button></div>
+    <div id="dshPlan"><div class="muted">بانتظار البيانات…</div></div>
+  </section>
+<section class="card c12" id="bestCard" style="display:none">
     <div class="sec a">🏆 أفضل صفقة الآن <small id="bestMeta">—</small><button class="small" id="pickBtn2" style="margin-inline-start:6px;color:#fff;border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.12)">🎯 تحديث كامل + مسح</button><button class="info" data-i="best" style="margin-inline-start:auto;color:#fff;border-color:rgba(255,255,255,.4)">i</button></div>
     <div class="chips" id="bestScope" style="margin:8px 0 2px;align-items:center"><button class="small" data-bscope="all">كل الـ watchlist</button><button class="small" data-bscope="pair">العملة المفتوحة بس</button><button class="small" data-bscope="gold">🥇 الذهب XAU</button><span class="mini muted" id="bestScopeNote"></span></div>
     <div id="pickBox" style="display:none"></div>
     <div class="prog"><b id="bestProg"></b></div>
     <div id="bestBox"></div>
   </section>
-  <section class="card c12" id="homeKpis">
-    <h2>📊 لوحة المؤشرات <small>كل بطاقة بتفتح كرتها المفصّل — الألوان = حالة المؤشر</small></h2>
+    <section class="card c6" id="dshFlow" data-title="السيولة والرافعة">
+    <div class="sec p">💧 السيولة والرافعة <small>وين المال رايح — spot، futures، order book، الحيتان، التصفيات</small></div>
+    <div id="dshFlowBox"><div class="muted">جاري التحميل…</div></div>
+  </section>
+  <section class="card c6" id="dshLevels" data-title="المستويات">
+    <div class="sec a">📏 المستويات والسيولة الراكدة <small>القاع الجديد · الحد الأعلى · الدعم/المقاومة · الأطر الأكبر · الجلسة</small></div>
+    <div id="dshLvlBox"><div class="muted">جاري الحساب…</div></div>
+  </section>
+  <section class="card c6" id="dshCtx" data-title="السياق">
+    <div class="sec">🌍 السياق <small>الأطر · الماكرو (DXY، سندات، نفط) · on-chain · Options · التدوير · الأخبار · الذهب</small></div>
+    <div id="dshCtxBox"><div class="muted">جاري التحميل…</div></div>
+  </section>
+  <section class="card c6" id="dshAcc" data-title="المحاسبة">
+    <div class="sec y">📋 المحاسبة والانضباط <small>الاختبار الخلفي · السيناريوهات · الدقة الحيّة · edge · الصفقات · المخاطر · البوابة</small></div>
+    <div id="dshAccBox"><div class="muted">جاري الحساب…</div></div>
+  </section>
+  <section class="card c12" id="dshOps" data-title="التشغيل والتحديثات">
+    <div class="sec g">🩺 التشغيل والتحديثات <small>مصادر البيانات · worker · Telegram · السحابة · PWA · النسخة والتحديثات · الفحص الذاتي</small></div>
+    <div id="dshOpsBox"><div class="muted">جاري التحميل…</div></div>
+  </section>
+<section class="card c12" id="homeKpis" data-title="لوحة المؤشرات">
+    <div class="sec p">🧩 لوحة المؤشرات <small>اختصار لكل كرت بالبرنامج — الألوان = حالة المؤشر، كبسة بتفتح الكرت المفصّل</small></div>
     <div class="tiles" id="homeTiles"></div>
-  </section>
-  <section class="card c6" id="homePlan">
-    <h2>🧭 خطة اليوم <small>المستويات · الجلسة · الأحداث · الحركة المتوقعة</small></h2>
-    <div id="homePlanBox" class="muted">جاري الحساب…</div>
-  </section>
-  <section class="card c6" id="homeFlows">
-    <h2>💧 السيولة والرافعة بسطرين <small>وين المال رايح</small></h2>
-    <div id="homeFlowBox" class="muted">جاري التحميل…</div>
   </section>
 </div></div>
 
@@ -794,7 +860,7 @@ button:disabled{opacity:.45;cursor:not-allowed;filter:saturate(.5)}
   </section>
   <section class="card c12" id="fwdCard">
     <h2>📡 Forward test — الـ worker 24/7 <small>المحرّك نفسه بيشتغل بالـ worker كل 5 دقايق على عملة من الـ watchlist وبيراجع نفسه بعد 4 ساعات — الدقة الحقيقية بلا ما تكون الصفحة مفتوحة</small><button class="info" data-i="forward">i</button><button class="small" id="fwdRefresh">تحديث</button></h2>
-    <div class="kpi" id="fwdKpi"><div><small>Forward test</small><b>بدّو worker</b><i>حطّ رابط الـ worker بالإعدادات ونزّله من جديد (v10.7) وأعد النشر</i></div></div>
+    <div class="kpi" id="fwdKpi"><div><small>Forward test</small><b>بدّو worker</b><i>حطّ رابط الـ worker بالإعدادات ونزّله من جديد (آخر نسخة) وأعد النشر</i></div></div>
     <div class="grid2" style="margin-top:8px"><div id="fwdBuckets"></div><div id="fwdBySym"></div></div>
     <div class="note" id="fwdNote">القراءة بالـ worker بتستعمل العوامل الأساسية (Delta، الترند، Divergence، OI، التدفّق، Funding، F&amp;G) — نفس الـ backtest — وأوزانك الحالية (بتنبعت للـ worker لما تحفظها). بعد 100 قراءة مقيّمة بتصير هي مصدر المعايرة التلقائي لأنها من الواقع مش من التاريخ.</div>
   </section>
@@ -893,7 +959,7 @@ button:disabled{opacity:.45;cursor:not-allowed;filter:saturate(.5)}
     </ul></div>
 
     <h3>9. قراءة الحالات الأربعة OI + السعر</h3>
-    <div class="box"><table><thead><tr><th>السعر</th><th>OI</th><th>المعنى</th><th>القرار</th></tr></thead><tbody>
+    <div class="box" style="overflow:auto"><table><thead><tr><th>السعر</th><th>OI</th><th>المعنى</th><th>القرار</th></tr></thead><tbody>
       <tr><td class="pos">↑</td><td class="pos">↑</td><td>longs جدد بمال جديد</td><td>ترند صحّي — long على pullback</td></tr>
       <tr><td class="pos">↑</td><td class="neg">↓</td><td>shorts عم يتغطّوا</td><td>صعود ضعيف — لا تلحقه، انطر</td></tr>
       <tr><td class="neg">↓</td><td class="pos">↑</td><td>shorts جدد بقناعة</td><td>ضغط هبوطي — short على bounce</td></tr>
@@ -962,10 +1028,12 @@ button:disabled{opacity:.45;cursor:not-allowed;filter:saturate(.5)}
     </ul></div>
     <h3>17. دليل الإصدار — كل شي بملف واحد</h3>
     <div class="box b"><ul>
-      <li><b>الملف:</b> fam_flow.html وحده — ارفعه على GitHub Pages بنفس الاسم. الصفقات/السجل/الإعدادات محفوظين بالمتصفّح (localStorage) ومفاتيحك ما بتطلع لحدا.</li>
+      <li><b>الملف:</b> index.html وحده — ارفعه على GitHub Pages بنفس الاسم (famlove88.github.io). الصفقات/السجل/الإعدادات محفوظين بالمتصفّح (localStorage) ومفاتيحك ما بتطلع لحدا.</li>
       <li><b>الـ worker (اختياري، 24/7):</b> من الإعدادات → ☁️ Worker: نزّل fam_flow_worker.js وwrangler.toml والدليل، وانشر على Cloudflare (الخطوات مكتوبة هونيك). بيعطيك: تنبيهات والصفحة مسكّرة، مراقبة السيناريوهات، on-chain كامل، السوق الكلي (OKX…)، التقرير الصباحي.</li>
       <li><b>الـ keys (كلها مجانية واختيارية):</b> Etherscan + TronGrid (on-chain)، CoinGecko Demo (الهيمنة/الستيبل إذا وقف الـ keyless). بدونها الصفحة بتشتغل وبتقلّك شو الناقص بـ 🩺 صحّة البيانات.</li>
       <li><b>الروتين:</b> الرئيسية → 🏆 أفضل صفقة الآن → إذا ≥ 60 وإدارة المخاطر بتسمح: ادخل (ورقي) أو راقب (شرطي) → المتابعة. كل أسبوع: 🧪 الاختبار الخلفي + 📈 تحليل أدائك.</li>
+      <li><b>التصفيات بلا worker (v11.2):</b> إذا stream الفيوتشر من Binance محجوب عندك، الصفحة بتفتح لحالها stream Bybit (أو OKX) مباشرة من المتصفّح — WebSocket ما بيخضع لقيود CORS — فبتشوف تصفيات العملة المفتوحة live + سياق التصفيات 1h لكل الـ watchlist، والمصدر مكتوب بوضوح بكرت التصفيات وبصحّة البيانات. CVD وحيتان الفيوتشر من بديل REST. يعني كل شي شغّال بدون worker — والـ worker بيضيف المراقبة 24/7 والتنبيهات بس.</li>
+      <li><b>الداشبورد (v11.1):</b> الرئيسية صارت لوحة قيادة كاملة: المؤشرات الرئيسية (10 بطاقات حيّة)، الشارت الحي مع أقرب دعم/مقاومة وخطة الصفقة ومناطق 1h/4h، الخطة والسيناريوهات مع نتيجة الـ checklist لو فتحت هلق، السيولة والرافعة، المستويات والسيولة الراكدة (القاع الجديد/الحد الأعلى)، السياق الكامل، المحاسبة والانضباط، والتشغيل والتحديثات (مصادر البيانات، worker، Telegram، السحابة، النسخة، الفحص الذاتي). كل رقم فيها من نفس الحالة اللي بتقرأ منها الكروت المفصّلة — وكل قسم فيه أزرار بتوصّلك للكرت الكامل.</li>
       <li><b>الانضباط (v11.0):</b> (1) السيناريوهات صارت 8 أنواع — زاد <b>الكسر الكاذب للسيولة</b> (القيعان/القمم المتساوية: الشمعة تكسرها وتسكّر عكسها خلال 3 شموع، والستوب بيتحدّد لحاله ورا الذيل) و<b>الكسر + إعادة الاختبار</b> (كسر بحجم ثم رجوع يلمس المستوى ويغلق بالاتجاه خلال 12 شمعة) — نفس الشرط بالصفحة وبالـ worker. (2) <b>🌳 اختبار أنواع السيناريوهات</b> بتبويب الاختبار: أي نوع إله edge على هالعملة/الإطار قبل ما تثق فيه، والنتيجة بتظهر تحت كل سيناريو وبتدخل بالـ Trade Score. (3) <b>📋 checklist قبل الدخول</b>: الأسس السبعة (الهيكل، المكان، التأكيد، الستوب، R:R، الممنوعات، الحجم/البوابة) بتنعلّم لحالها وبتظهر قبل كل صفقة ورقية — الدخول رغم ❌ بينعلّم وبيطلع بتحليل الأداء. (4) مناطق 1h و4h على شارت 15m (متقطّعة، مكتوب عليها الإطار). (5) فلتر سيولة بالمسح والبوابة (حجم 24h وspread بالإعدادات). (6) 📆 المراجعة الأسبوعية بتبويب المتابعة وعلى Telegram كل اثنين.</li>
       <li><b>🛢️ النفط وسندات أميركا (v10.9):</b> بتبويب السوق الكلي ← Macro live: WTI، Brent، 2Y، 10Y، 2s10s، TLT مع تغيّر 7 و30 يوم، و«مزاج الماكرو» (risk-on / risk-off / تضخّمي / هادي) مع أسبابه، وارتباط BTC–النفط وBTC–10Y والذهب–10Y. المصدر: الـ worker (stooq) أو مفتاح Alpha Vantage مجاني من الإعدادات (25 طلب/يوم — بيكفي). بيدخل بالمحرّك كعامل «مزاج الماكرو» بوزن 4 على 4h/1d وعلى الذهب بس — البيانات يومية، فما بتحرّك صفقة 15 دقيقة.</li>
       <li><b>🎨 الرسم على الشارت (v10.8):</b> بكرت الشارت زر «ارسم المستويات» مع 6 طبقات: مناطق دعم/مقاومة مظلّلة (سماكتها من ATR، لونها حسب الجهة، شفافيتها حسب القوّة، وعلى كل منطقة ✓ وين صمدت و✗ وين انكسرت)، القاع الجديد والحد الأعلى مع HH/HL/LH/LL والقاع/القمة اللي عم تتكوّن، الرينج (صندوق) أو القناة (EMA20 ± ATR)، خطة الصفقة (دخول/Stop/TP مع R والمخاطرة مظلّلة)، السيولة (قمم/قيعان متساوية، تقدير التصفيات)، ولوحة فيها أقرب دعم ومقاومة بالـ % و×ATR. كل شي طالع من مستويات المحرّك نفسها — مش تحليل تاني.</li>
@@ -1082,6 +1150,13 @@ service cloud.firestore {
     <div class="row"><span class="k">إرسال كل التنبيهات على Telegram</span><span class="v"><button class="small" id="tgAlBtn">off</button></span></div>
     <div class="note" id="wkInfo">بدون worker: كل شي بيشتغل والصفحة مفتوحة. مع الـ worker: تنبيهات 24/7 (سعر/Funding/OI/أخبار)، مراقبة السيناريوهات، on-chain، التقرير الصباحي، تجميع Liquidations والحيتان — و<b>بوابة بيانات (v10.3)</b>: الأخبار وF&amp;G والذهب وCoinGecko والـ macro بتمرق كلها من الـ worker مع cache، فبتختفي أغلب الـ ❌ وبتبقى المفاتيح عندو مش بالمتصفّح.</div>
     <div class="btnrow" style="margin-top:8px"><button class="small" id="dlWorker">⬇️ تنزيل fam_flow_worker.js</button><button class="small" id="dlToml">⬇️ تنزيل wrangler.toml</button><button class="small" id="dlGuide">⬇️ تنزيل الدليل (README)</button></div>
+    <details style="margin-top:8px" id="wkPhone"><summary class="mini" style="cursor:pointer"><b>📱 نشر الـ worker من الموبايل — بلا wrangler ولا كمبيوتر (6 خطوات، مرّة وحدة)</b></summary><div class="note" style="margin-top:6px;line-height:1.9">
+      <b>1) KV:</b> dash.cloudflare.com → Storage &amp; Databases → KV → Create → الاسم <code>fam_flow</code>. انسخ الـ ID تبعو.<br>
+      <b>2) الكود:</b> نزّل <code>fam_flow_worker.js</code> و<code>wrangler.toml</code> من فوق. افتح wrangler.toml وبدّل <code>PUT_YOUR_KV_NAMESPACE_ID_HERE</code> بالـ ID. ارفع الملفين على GitHub بـ repo جديد اسمو <code>fam-flow-worker</code> (Add file → Upload files).<br>
+      <b>3) النشر:</b> Workers &amp; Pages → Create → <b>Import a repository</b> → اختار <code>fam-flow-worker</code> → Deploy command: <code>npx wrangler deploy</code> → Deploy. (البديل بلا GitHub: Create → Hello World → Edit code → الصق محتوى fam_flow_worker.js → Deploy، وبعدها Settings → Bindings → Add → KV namespace باسم <code>FLOW_KV</code>، وTriggers → Cron: <code>*/5 * * * *</code> · <code>*/10 * * * *</code> · <code>2-57/5 * * * *</code>).<br>
+      <b>4) الأسرار:</b> الـ worker → Settings → Variables and Secrets → Add (Secret): <code>FAM_KEY</code> (كلمة سر طويلة من عندك)، <code>TG_TOKEN</code>، <code>TG_CHAT</code>، واختياري <code>ES_KEY</code> (Etherscan).<br>
+      <b>5) الربط:</b> انسخ رابط الـ worker (<code>https://fam-flow.xxx.workers.dev</code>) وحطّو فوق مع نفس الـ FAM_KEY → حفظ → «اختبار الـ worker» لازم يرجّع ✓ ومحرّك v<span id="wkPhoneV"></span>.<br>
+      <b>6) بعد كل نسخة جديدة من الصفحة:</b> نزّل fam_flow_worker.js من جديد، ارفعو مكان القديم بالـ repo (GitHub بينشر لحالو) — أو الصق من جديد بـ Edit code.</div></details>
     <div class="note"><b>النشر (مرّة وحدة):</b> <code>npm i -g wrangler</code> → <code>wrangler login</code> → <code>wrangler kv namespace create FLOW_KV</code> (حطّ الـ id بـ wrangler.toml) → <code>wrangler secret put TG_TOKEN / TG_CHAT / FAM_KEY / ES_KEY</code> (و<code>TRON_KEY</code> اختياري) → <code>wrangler deploy</code> → حطّ الرابط والـ FAM_KEY فوق واكبس حفظ. بعد أي تحديث للصفحة: نزّل الـ worker من هون وأعد <code>wrangler deploy</code>.</div>
   </section>
   <section class="card c6" id="qgCard">
@@ -1132,7 +1207,7 @@ service cloud.firestore {
   <section class="card c6" id="ciCard">
     <h2>🤖 فحص تلقائي على GitHub + 📱 تطبيق (PWA) <small>كل رفعة للملف بتتفحص لحالها على GitHub Actions — وsw.js بيخلّي الصفحة تنفتح كتطبيق وتحمّل أسرع</small><button class="info" data-i="ci">i</button></h2>
     <div class="btnrow"><button class="small primary" id="dlCiYml">⬇️ selftest.yml</button><button class="small" id="dlCiJs">⬇️ ci_selftest.mjs</button><button class="small" id="dlSw">⬇️ sw.js</button><button class="small" id="updCheck">🔎 فحص تحديث</button><span class="mini" id="ciMsg"></span></div>
-    <div class="note" style="margin-top:8px"><b>GitHub (من الموقع، بلا أوامر):</b> بالمستودع اكبس <b>Add file → Upload files</b> وارفع:<br>• <code>selftest.yml</code> بالمسار <code>.github/workflows/selftest.yml</code> (اكتب المسار كامل بخانة الاسم وبيعمل المجلّدات لحاله)<br>• <code>ci_selftest.mjs</code> بالمسار <code>ci/ci_selftest.mjs</code><br>بعدها كل رفعة لـ fam_flow.html بتشغّل الفحص الذاتي headless على Chromium — إذا فشل اختبار أو صار خطأ JS بتشوف ❌ بتبويب Actions وبيوصلك إيميل من GitHub.<br><b>PWA:</b> ارفع <code>sw.js</code> جنب fam_flow.html (نفس المجلّد) — الصفحة بتسجّله لحالها إذا لقيته. بعدها من Chrome عالموبايل: ⋮ → «إضافة إلى الشاشة الرئيسية» وبتنفتح كتطبيق بلا شريط عنوان، والمكتبات بتنحفظ محلياً (البيانات الحيّة ما بتنحفظ أبداً).<br><b>فحص التحديث:</b> كل 30 دقيقة الصفحة بتقارن نسختها بالمنشورة — <span id="updInfo" class="muted">لسا</span></div>
+    <div class="note" style="margin-top:8px"><b>GitHub (من الموقع، بلا أوامر):</b> بالمستودع اكبس <b>Add file → Upload files</b> وارفع:<br>• <code>selftest.yml</code> بالمسار <code>.github/workflows/selftest.yml</code> (اكتب المسار كامل بخانة الاسم وبيعمل المجلّدات لحاله)<br>• <code>ci_selftest.mjs</code> بالمسار <code>ci/ci_selftest.mjs</code><br>بعدها كل رفعة لـ index.html بتشغّل الفحص الذاتي headless على Chromium — إذا فشل اختبار أو صار خطأ JS بتشوف ❌ بتبويب Actions وبيوصلك إيميل من GitHub.<br><b>PWA:</b> ارفع <code>sw.js</code> جنب index.html (نفس المجلّد) — الصفحة بتسجّله لحالها إذا لقيته. بعدها من Chrome عالموبايل: ⋮ → «إضافة إلى الشاشة الرئيسية» وبتنفتح كتطبيق بلا شريط عنوان، والمكتبات بتنحفظ محلياً (البيانات الحيّة ما بتنحفظ أبداً).<br><b>فحص التحديث:</b> كل 30 دقيقة الصفحة بتقارن نسختها بالمنشورة — <span id="updInfo" class="muted">لسا</span></div>
   </section>
   <section class="card c6" id="errCard">
     <h2>🐞 سجل الأخطاء <small>كل خطأ بينسجّل هون مع وقته ومصدره — انسخه وابعته لما يصير شي</small><span class="chip" id="errCount">0</span></h2>
@@ -1146,7 +1221,7 @@ service cloud.firestore {
   </section>
   <section class="card c12" id="weightsCard">
     <h2>أوزان التقييم <small>قابلة للتعديل — أو خلّي الاختبار الخلفي يقترحها بالأرقام</small><span class="chip" style="margin-inline-start:auto">Engine v<b id="engVer">—</b></span></h2>
-    <table><thead><tr><th>العامل</th><th>الوزن</th><th>الافتراضي</th><th>ليش</th></tr></thead><tbody id="wBody"></tbody></table>
+    <div style="overflow:auto"><table><thead><tr><th>العامل</th><th>الوزن</th><th>الافتراضي</th><th>ليش</th></tr></thead><tbody id="wBody"></tbody></table></div>
     <div class="btnrow" style="margin-top:8px"><button class="small primary" id="wSave">حفظ الأوزان</button><button class="small" id="wReset">استرجاع الافتراضي</button><span class="mini" id="wMsg"></span></div>
     <div class="grid2" style="margin-top:10px">
       <div><div class="mini" style="margin-bottom:4px"><b>سجل تغييرات الأوزان</b> (كل تغيير موثّق — واسترجاع بكبسة)</div><div id="wLog" class="alog"></div></div>
@@ -1156,8 +1231,8 @@ service cloud.firestore {
   </section>
 </div></div>
 
-<script type="text/plain" id="swSrc">/* FAM Flow — service worker v10.8
-   حطّه جنب fam_flow.html بنفس المجلّد باسم sw.js (الصفحة بتسجّله لحالها إذا لقيته).
+<script type="text/plain" id="swSrc">/* FAM Flow — service worker v11.1
+   حطّه جنب index.html بنفس المجلّد باسم sw.js (الصفحة بتسجّله لحالها إذا لقيته).
    - الصفحة نفسها: network-first (التحديثات بتوصل فوراً، وإذا ما في إنترنت بتفتح آخر نسخة)
    - المكتبات والخطوط (jsdelivr / cdnjs / Google Fonts / Firebase SDK): cache-first
    - كل الباقي (Binance، الـ worker، الأخبار…): بلا تدخّل — البيانات الحيّة ما بتنحفظ أبداً
@@ -1175,11 +1250,11 @@ self.addEventListener('fetch',e=>{const r=e.request;if(r.method!=='GET')return;l
 </script>
 <script type="text/plain" id="ciYmlSrc"># FAM Flow — self-test on GitHub Actions (v10.6)
 # المسار بالمستودع: .github/workflows/selftest.yml   (+ ملف ci/ci_selftest.mjs)
-# بيشتغل بعد كل رفعة لـ fam_flow.html، ويدوياً من تبويب Actions، وكل اثنين (لو تغيّر Chromium أو الـ CDN)
+# بيشتغل بعد كل رفعة لـ index.html، ويدوياً من تبويب Actions، وكل اثنين (لو تغيّر Chromium أو الـ CDN)
 name: FAM Flow self-test
 on:
   push:
-    paths: ['fam_flow.html', 'ci/**', '.github/workflows/selftest.yml']
+    paths: ['index.html', 'ci/**', '.github/workflows/selftest.yml']
   workflow_dispatch:
   schedule:
     - cron: '23 4 * * 1'
@@ -1200,7 +1275,7 @@ jobs:
       - name: Syntax check (inline scripts)
         run: |
           node -e '
-            const h = require("fs").readFileSync("fam_flow.html", "utf8");
+            const h = require("fs").readFileSync("index.html", "utf8");
             const re = new RegExp("<scr" + "ipt(?![^>]*\\bsrc=)(?![^>]*text/plain)[^>]*>([\\s\\S]*?)</scr" + "ipt>", "g");
             let n = 0;
             for (const m of h.matchAll(re)) { new Function(m[1]); n++; }
@@ -1208,16 +1283,16 @@ jobs:
             console.log("inline scripts parsed OK:", n);
           '
       - name: Run the self-test headless
-        run: node ci/ci_selftest.mjs fam_flow.html
+        run: node ci/ci_selftest.mjs index.html
 </script>
-<script type="text/plain" id="ciJsSrc">// FAM Flow — CI self-test (v10.6). الاستعمال: node ci/ci_selftest.mjs fam_flow.html
+<script type="text/plain" id="ciJsSrc">// FAM Flow — CI self-test (v10.6). الاستعمال: node ci/ci_selftest.mjs index.html
 // بيفتح الصفحة headless على Chromium (الشبكة ممنوعة إلا مكتبة الـ chart)، بيشغّل ?selftest=1،
 // وبيفشل إذا في اختبار ❌ أو أي خطأ JavaScript غير ملتقَط.
 import { chromium } from 'playwright';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const file = resolve(process.argv[2] || 'fam_flow.html');
+const file = resolve(process.argv[2] || 'index.html');
 const html = readFileSync(file, 'utf8');
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, locale: 'ar' });
@@ -1231,7 +1306,7 @@ await page.route('**/*', r => {
   if (u.startsWith('https://famflow.test/')) return r.fulfill({ status: 200, contentType: 'text/html; charset=utf-8', body: html });
   return r.abort();
 });
-await page.goto('https://famflow.test/fam_flow.html?selftest=1', { waitUntil: 'domcontentloaded' });
+await page.goto('https://famflow.test/index.html?selftest=1', { waitUntil: 'domcontentloaded' });
 let res = { rows: [], note: '' };
 try {
   await page.waitForFunction(() => /\d+\/\d+\s*نجح/.test(((document.querySelector('#selfTestOut .note') || {}).textContent) || ''), null, { timeout: 90000 });
@@ -1248,7 +1323,7 @@ console.log('\n✅ FAM Flow self-test passed');
 </script>
 <script type="text/plain" id="workerSrc">/* ============================================================
    FAM Flow — Cloudflare Worker (v5 / phase 1)
-   24/7 companion for fam_flow.html:
+   24/7 companion for index.html (FAM Flow):
      - Cron (every 5 min): price alerts, extreme funding, OI jumps, ⚡ news → Telegram
      - Aggregates the liquidations / whale counters the page pushes (rolling 24h, per symbol)
      - Relays Telegram messages for the page (so the bot token never sits in the browser)
@@ -1610,7 +1685,7 @@ let mtf={},factors=[],bias={score:0,prob:50,label:'—'};
 let timers=[],lastTrack=0,lastRenderT=0,tDir='long',priceLines=[],watchData={};
 /* v4 state */
 let futOK=true,premium=null,flows={spot:{},fut:{},oiv:{},rvol:null,oiHist5:[]},cvdHist={fut:[]},fundHist=[],lsHist={g:[],t:[],k:[]};
-let dayInfo=null,dayATR=0,todayRange=null,vwap=null,lv=[],lvLines=[],lastRec=null;
+let dayInfo=null,dayATR=0,todayRange=null,vwap=null,lv=[],lastRec=null;
 let chart2=null,cvdS=null,cvdF=null,chartOI=null,oiSeries=null,chartRO=null,chart2RO=null,chartOIRO=null;
 let macro={fng:null,fngCls:'',fngHist:[],cap:null,capChg:null,dom:null,stab:null,stabChg:null};
 let gold={xau:null,xauT:0,paxg:null,paxgChg:null,paxgBias:null,corr:null,ratio:null,perf:{},flows:{}};
@@ -1619,7 +1694,7 @@ let CAL_ON=localStorage.getItem('fam_cal')!=='off',CG_KEY=localStorage.getItem('
 let AL={flip:localStorage.getItem('fam_al_flip')!=='off',fund:localStorage.getItem('fam_al_fund')!=='off',news:localStorage.getItem('fam_al_news')!=='off'};
 let lastSig=null,lastFlipAt=0,lastFundAlert=0;
 /* v5 state */
-const ENGINE_VERSION='11.0';
+const ENGINE_VERSION='11.2';
 /* v10.6: إذا مكتبة الـ chart ما تحمّلت (CDN واقف / offline) الصفحة بتكمّل بلا رسم بدل ما تموت كلها */
 if(typeof window.LightweightCharts==='undefined'){const mk=()=>{const p=new Proxy(function(){},{get:(t,k)=>k==='then'?undefined:k===Symbol.toPrimitive?()=>'':p,apply:()=>p});return p;};window.LightweightCharts={__stub:true,createChart:()=>mk()};}
 const W_DEFAULT={delta:22,trend:15,div:15,oi:15,flow:12,fund:10,sf:10,taker:8,ob:6,top:6,liq:5,news:5,fng:4,prem:6,xfund:6,rot:6,chain:6,whale:6,macro:4};
@@ -1680,7 +1755,7 @@ async function syncClock(){try{const j=await spotGet('/api/v3/time');TIME_OFFSET
 
 /* ================== TABS / MODAL ================== */
 document.querySelectorAll('#tabs button[data-t]').forEach(b=>b.onclick=()=>showTab(b.dataset.t));
-function showTab(t){if(!t||!$('page-'+t))return;try{localStorage.setItem('fam_tab',t);}catch(e){}document.querySelectorAll('#tabs button[data-t]').forEach(x=>x.classList.toggle('active',x.dataset.t===t));const mb=$('moreBtn');if(mb){const cur=document.querySelector('#tabs button[data-t="'+t+'"]');mb.classList.toggle('active',!!(cur&&!cur.classList.contains('pri')));}document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+t));try{buildSubnav(t);if(t==='home')renderHome(true);}catch(e){}if(t==='detail'&&chart){setTimeout(()=>{chart.applyOptions({width:$('chart').clientWidth});chart.timeScale().fitContent();},50);}
+function showTab(t){if(!t||!$('page-'+t))return;try{localStorage.setItem('fam_tab',t);}catch(e){}document.querySelectorAll('#tabs button[data-t]').forEach(x=>x.classList.toggle('active',x.dataset.t===t));const mb=$('moreBtn');if(mb){const cur=document.querySelector('#tabs button[data-t="'+t+'"]');mb.classList.toggle('active',!!(cur&&!cur.classList.contains('pri')));}document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+t));try{buildSubnav(t);if(t==='home'){renderHome(true);setTimeout(()=>{try{renderDash(true);}catch(e){}},50);}}catch(e){}if(t==='detail'&&chart){setTimeout(()=>{chart.applyOptions({width:$('chart').clientWidth});chart.timeScale().fitContent();},50);}
   if(t==='track'){try{analyze();}catch(e){}}
   if(t==='gold'){try{if(!goldState.running&&Date.now()-goldState.t>5*60e3)setTimeout(()=>scanGold().catch(()=>{}),200);}catch(e){}}
   if(t==='flow'){setTimeout(()=>{if(chart2){chart2.applyOptions({width:$('chart2').clientWidth});chart2.timeScale().fitContent();}if(chartOI){chartOI.applyOptions({width:$('chartOI').clientWidth});chartOI.timeScale().fitContent();}},50);}}
@@ -1747,7 +1822,7 @@ function initChart(){
   deltaSeries=chart.addHistogramSeries({priceFormat:{type:'volume'},priceScaleId:'delta'});
   chart.priceScale('delta').applyOptions({scaleMargins:{top:0.8,bottom:0}});
   chartRO=new ResizeObserver(()=>{if(el.clientWidth&&chart)chart.applyOptions({width:el.clientWidth});});chartRO.observe(el);
-  priceLines=[];lvLines=[];drawPrim=null;
+  priceLines=[];drawPrim=null;
 }
 function initChart2(){
   const el=$('chart2');if(!el)return;if(chart2){try{chart2.remove();}catch(e){}chart2=null;}if(chart2RO){try{chart2RO.disconnect();}catch(e){}chart2RO=null;}el.innerHTML='';
@@ -1777,6 +1852,7 @@ function updateCandle(k){
   if(last&&last.ts===c.ts)candles[candles.length-1]=c;else{candles.push(c);if(candles.length>400)candles.shift();}
   candleSeries.update({time:c.time,open:c.open,high:c.high,low:c.low,close:c.close});
   deltaSeries.update({time:c.time,value:c.delta*c.close,color:dcol(c)});
+  try{if($('page-home').classList.contains('active'))dashTick(c);}catch(e){}
 }
 
 /* ================== WEBSOCKETS ================== */
@@ -1792,7 +1868,7 @@ function openSpotWS(){
   spotWS.onopen=()=>{$('dotSpot').classList.add('on');health.spotws={ok:true,t:Date.now()};wsRetry.spot=0;wsLast.spot=Date.now();};
   spotWS.onclose=()=>{if(!spotPoll.on)$('dotSpot').classList.remove('on');health.spotws=spotPoll.on?{ok:true,t:Date.now(),note:'الـ stream محجوب من شبكتك — بديل REST شغّال (بيحاول يرجع)'}:{ok:false,t:Date.now(),err:'closed'};const d=wsDelay('spot');setTimeout(()=>{if(spotWS&&spotWS.readyState===3)openSpotWS();},d);};
   spotWS.onmessage=e=>{wsLast.spot=Date.now();
-    const {stream,data:d}=JSON.parse(e.data);
+    const _m=JSON.parse(e.data),stream=_m&&_m.stream,d=_m&&_m.data;if(!stream||!d)return;
     if(stream.endsWith('aggTrade')){
       const q=+d.p*+d.q,buy=!d.m;cvdSpot+=buy?q:-q;cvdN++;lastPrice=+d.p;
       whaleCheck(q,buy,+d.p,'SPOT');
@@ -1813,7 +1889,7 @@ function openFutWS(){
   futWS.onopen=()=>{$('dotFut').classList.add('on');health.futws={ok:true,t:Date.now()};wsRetry.fut=0;wsLast.fut=Date.now();};
   futWS.onclose=()=>{if(!futPoll.on)$('dotFut').classList.remove('on');health.futws=futPoll.on?{ok:true,t:Date.now(),note:'الـ stream محجوب من شبكتك — بديل REST شغّال (بيحاول يرجع)'}:{ok:false,t:Date.now(),err:'closed'};const d=wsDelay('fut');setTimeout(()=>{if(futOK&&futWS&&futWS.readyState===3)openFutWS();},d);};
   futWS.onmessage=e=>{wsLast.fut=Date.now();
-    const {stream,data:d}=JSON.parse(e.data);
+    const _m=JSON.parse(e.data),stream=_m&&_m.stream,d=_m&&_m.data;if(!stream||!d)return;
     if(stream.endsWith('aggTrade')){const q=+d.p*+d.q,buy=!d.m;cvdFut+=buy?q:-q;whaleCheck(q,buy,+d.p,'FUT');}
     else if(stream.endsWith('forceOrder')){
       const o=d.o,v=+o.ap*+o.q,longLiq=o.S==='SELL';
@@ -1828,19 +1904,19 @@ function closeSockets(){wsKill(spotWS);wsKill(futWS);spotWS=futWS=null;}
    - صفقات الفيوتشر: /fapi/v1/aggTrades بـ fromId (بلا تكرار) → CVD الفيوتشر + حيتان الفيوتشر بيضلّوا شغّالين
    - التصفيات: Binance ما عندها REST (شالتو 2021) → بتنعرض من OKX عبر الـ worker أو بتنكتب "stream مش واصل" بدل $0 كاذب
    - دفتر الأوامر: /api/v3/depth كل 5 ثواني إذا الـ depth stream ساكت */
-let futPoll={id:null,on:false,last:0,busy:false,fails:0},obPoll={lastStream:0,last:0,busy:false,on:false};
+let futPoll={id:null,on:false,last:0,busy:false,fails:0},obPoll={lastStream:0,last:0,busy:false,on:false},netNote={fut:0,spot:0}; /* v11.1: التنبيه مرّة وحدة بالجلسة — مش كل ما تغيّر العملة أو رجع/راح الـ stream */
 function futStreamLive(){return !!(futWS&&futWS.readyState===1&&wsLast.fut&&Date.now()-wsLast.fut<90e3);}
 async function futPollTick(){
   if(!futOK||futPoll.busy)return;
-  if(futStreamLive()){if(futPoll.on){futPoll.on=false;health.futpoll={ok:true,off:true,t:Date.now(),note:'الـ stream رجع — البديل واقف'};renderHealth();}return;}
+  if(futStreamLive()){if(futPoll.on){futPoll.on=false;health.futpoll={ok:true,off:true,t:Date.now(),note:'الـ stream رجع — البديل واقف'};renderHealth();}if(liqAlt.on||liqAlt.ws){closeLiqAlt();if(liqAllWS&&liqAllWS.readyState===1)hOK('liqall',{note:'USDT-M'});}return;}
   if(Date.now()-wsBoot<15e3&&!futPoll.on)return;
   futPoll.busy=true;
   try{for(let k=0;k<4;k++){const q=futPoll.id==null?`/fapi/v1/aggTrades?symbol=${PAIR}&limit=500`:`/fapi/v1/aggTrades?symbol=${PAIR}&fromId=${futPoll.id+1}&limit=1000`;const arr=await futGet(q);if(!Array.isArray(arr)||!arr.length)break;
       const cut=Date.now()-120e3;for(const t of arr){if(futPoll.id!=null&&+t.a<=futPoll.id)continue;if(futPoll.id==null&&+t.T<cut)continue;const qv=+t.p*+t.q,buy=!t.m;cvdFut+=buy?qv:-qv;whaleCheck(qv,buy,+t.p,'FUT·REST');}
       futPoll.id=Math.max(futPoll.id||0,...arr.map(t=>+t.a));if(arr.length<1000)break;}
     futPoll.last=Date.now();futPoll.fails=0;
-    if(!futPoll.on){futPoll.on=true;toast('📡 stream الفيوتشر مش واصل من شبكتك — شغّلت بديل REST (CVD وحيتان الفيوتشر)');}
-    health.futpoll={ok:true,t:Date.now(),note:'شغّال كل 8 ثواني — CVD وحيتان الفيوتشر · التصفيات بدّها stream أو worker (OKX)'};$('dotFut').classList.add('on');if(!futStreamLive()){health.futws={ok:true,t:Date.now(),note:'الـ stream محجوب من شبكتك — بديل REST شغّال (بيحاول يرجع)'};if(!(liqAllWS&&liqAllWS.readyState===1))health.liqall={ok:true,off:true,t:Date.now(),note:'stream الفيوتشر محجوب من شبكتك — التصفيات بدّها worker (OKX)'};}
+    if(!futPoll.on){futPoll.on=true;if(!netNote.fut){netNote.fut=Date.now();toast('📡 stream الفيوتشر مش واصل من شبكتك — شغّلت بديل REST (CVD وحيتان الفيوتشر)');}}
+    health.futpoll={ok:true,t:Date.now(),note:'شغّال كل 8 ثواني — CVD وحيتان الفيوتشر · التصفيات من Bybit/OKX مباشرة'};$('dotFut').classList.add('on');if(!futStreamLive()){health.futws={ok:true,t:Date.now(),note:'الـ stream محجوب من شبكتك — بديل REST شغّال (بيحاول يرجع)'};if(!(liqAllWS&&liqAllWS.readyState===1)){if(!liqAltLive()){if(!liqAlt.ws)health.liqall={ok:true,off:true,t:Date.now(),note:'stream الفيوتشر محجوب من شبكتك — عم أفتح Bybit/OKX مباشرة…'};openLiqAlt();}}}
   }catch(e){futPoll.fails++;if(futPoll.fails>=3)hErr('futpoll',e);}
   futPoll.busy=false;renderHealth();renderLiqNote();
 }
@@ -1855,7 +1931,7 @@ async function spotPollTick(){
       const cut=Date.now()-120e3;let last=null;for(const t of arr){if(spotPoll.id!=null&&+t.a<=spotPoll.id)continue;if(spotPoll.id==null&&+t.T<cut)continue;const qv=+t.p*+t.q,buy=!t.m;cvdSpot+=buy?qv:-qv;cvdN++;whaleCheck(qv,buy,+t.p,'SPOT·REST');last=t;}
       if(last){lastPrice=+last.p;$('tPrice').textContent=fp(lastPrice);}
       spotPoll.id=Math.max(spotPoll.id||0,...arr.map(t=>+t.a));if(arr.length<1000)break;}
-    spotPoll.fails=0;if(!spotPoll.on){spotPoll.on=true;toast('📡 stream السبوت مش واصل — شغّلت بديل REST (السعر، CVD، الحيتان)');}
+    spotPoll.fails=0;if(!spotPoll.on){spotPoll.on=true;if(!netNote.spot){netNote.spot=Date.now();toast('📡 stream السبوت مش واصل — شغّلت بديل REST (السعر، CVD، الحيتان)');}}
     health.spotpoll={ok:true,t:Date.now(),note:'شغّال كل 8 ثواني — السعر/CVD/الحيتان من REST'};$('dotSpot').classList.add('on');if(!spotStreamLive()){health.spotws={ok:true,t:Date.now(),note:'الـ stream محجوب من شبكتك — بديل REST شغّال (بيحاول يرجع)'};if(WHALE_ALL==='on'&&!(whaleAllWS&&whaleAllWS.readyState===1))health.whaleall={ok:true,off:true,t:Date.now(),note:'stream السبوت محجوب من شبكتك — رادار الـ watchlist واقف'};}
     if(lastPrice){trackTrades(lastPrice);checkAlerts(lastPrice);}
   }catch(e){spotPoll.fails++;if(spotPoll.fails>=3)hErr('spotpoll',e);}
@@ -1869,19 +1945,59 @@ async function obPollTick(){
   catch(e){}
   obPoll.busy=false;
 }
+/* ---- v11.2: تصفيات بديلة مباشرة من المتصفّح (Bybit ثم OKX) لمّا stream Binance محجوب من الشبكة ----
+   WebSocket ما بيخضع لـ CORS، فالمتصفّح بيقدر يفتح stream Bybit/OKX لحالو بلا worker.
+   Bybit allLiquidation: S="Buy" = تصفية LONG (جهة المركز مش جهة الأمر) · v بالعملة · p = سعر الإفلاس.
+   OKX liquidation-orders: sz بالعقود × ctVal (BTC 0.01 / ETH 0.1 / الباقي من REST instruments) · posSide long/short. */
+let liqAlt={ws:null,src:null,on:false,fail:{},t:0,ping:null,syms:[],ctVal:{'BTC-USDT-SWAP':0.01,'ETH-USDT-SWAP':0.1},n:0};
+function liqAltSyms(){return [...new Set([PAIR,...WATCH])].filter(s=>/USDT$/.test(s));}
+function liqAltLive(){return !!(liqAlt.ws&&liqAlt.ws.readyState===1&&liqAlt.on);}
+function liqAltName(){return liqAlt.src==='okx'?'OKX':'Bybit';}
+function liqAltPush(sym,v,longLiq,price,t){
+  liqAlt.n++;ringPush(liqAll,sym,{t,v,long:longLiq});
+  if(sym===PAIR){if(longLiq)liq.long+=v;else liq.short+=v;const a=$('liqLong'),b=$('liqShort'),c=$('liqS');if(a)a.textContent=usd(liq.long);if(b)b.textContent=usd(liq.short);if(c)c.innerHTML=`<span class="neg">L ${usd(liq.long)}</span> / <span class="pos">S ${usd(liq.short)}</span>`;
+    if($('liqFeed'))feedAdd('liqFeed',`<span class="${longLiq?'sell':'buy'}">${longLiq?'LONG 💥':'SHORT 💥'}</span><span>${usd(v)}</span><span>@${fp(price)}</span><span class="muted">${liqAltName()} · ${new Date(t).toLocaleTimeString('en-GB')}</span>`);}
+}
+function liqAltSub(ws,s){try{ws.send(JSON.stringify({op:'subscribe',args:['allLiquidation.'+s]}));}catch(e){}}
+function liqAltSync(){if(!liqAltLive()||liqAlt.src!=='bybit')return;for(const s of liqAltSyms()){if(!liqAlt.syms.includes(s)){liqAlt.syms.push(s);liqAltSub(liqAlt.ws,s);}}}
+function openLiqAlt(){
+  if(!futOK||liqAltLive()||(liqAlt.ws&&liqAlt.ws.readyState===0))return;
+  const order=['bybit','okx'].filter(k=>!(liqAlt.fail[k]&&Date.now()-liqAlt.fail[k]<10*60e3));const src=order[0];if(!src)return;
+  closeLiqAlt();liqAlt.src=src;liqAlt.t=Date.now();let ws;
+  try{ws=new WebSocket(src==='bybit'?'wss://stream.bybit.com/v5/public/linear':'wss://ws.okx.com:8443/ws/v5/public');}catch(e){liqAlt.fail[src]=Date.now();setTimeout(openLiqAlt,1500);return;}
+  liqAlt.ws=ws;let opened=false;
+  ws.onopen=()=>{opened=true;liqAlt.on=true;liqAlt.syms=liqAltSyms();wsLast.liq=Date.now();
+    if(src==='bybit'){liqAlt.syms.forEach(s=>liqAltSub(ws,s));liqAlt.ping=setInterval(()=>{try{ws.send(JSON.stringify({op:'ping'}));}catch(e){}},20e3);}
+    else{try{ws.send(JSON.stringify({op:'subscribe',args:[{channel:'liquidation-orders',instType:'SWAP'}]}));}catch(e){}liqAlt.ping=setInterval(()=>{try{ws.send('ping');}catch(e){}},25e3);liqAltCtVal();}
+    health.liqall={ok:true,t:Date.now(),note:`المصدر ${liqAltName()} مباشرة من المتصفّح — stream Binance محجوب عندك`};renderHealth();renderLiqNote();};
+  ws.onmessage=e=>{try{if(e.data==='pong')return;const d=JSON.parse(e.data);if(d.op==='pong'||d.event)return;wsLast.liq=Date.now();
+    if(src==='bybit'){if(d.topic&&d.topic.startsWith('allLiquidation.')&&Array.isArray(d.data)){for(const x of d.data){const p=+x.p,q=+x.v;if(!(p>0&&q>0))continue;liqAltPush(x.s,p*q,x.S==='Buy',p,+x.T||Date.now());}}}
+    else if(d.arg&&d.arg.channel==='liquidation-orders'&&Array.isArray(d.data)){for(const it of d.data){const inst=it.instId||'';if(!/-USDT-SWAP$/.test(inst))continue;const cv=liqAlt.ctVal[inst];if(!cv)continue;const sym=inst.replace('-USDT-SWAP','USDT');for(const x of (it.details||[])){const p=+x.bkPx,q=+x.sz*cv;if(!(p>0&&q>0))continue;const longLiq=x.posSide==='long'||(x.posSide!=='short'&&x.side==='sell');liqAltPush(sym,p*q,longLiq,p,+x.ts||Date.now());}}}
+  }catch(x){}};
+  ws.onerror=()=>{};
+  ws.onclose=()=>{clearInterval(liqAlt.ping);liqAlt.ping=null;const was=liqAlt.on;liqAlt.on=false;liqAlt.ws=null;if(!opened)liqAlt.fail[src]=Date.now();
+    if(futOK&&!futStreamLive()&&!(liqAllWS&&liqAllWS.readyState===1)){const allFail=['bybit','okx'].every(k=>liqAlt.fail[k]&&Date.now()-liqAlt.fail[k]<10*60e3);health.liqall=allFail?{ok:false,t:Date.now(),err:'stream Binance وBybit وOKX كلهم ما وصلوا من شبكتك — الحل: worker أو VPN (بجرّب كل 10 دقايق)'}:{ok:true,off:true,t:Date.now(),note:'stream الفيوتشر محجوب من شبكتك — عم جرّب Bybit/OKX مباشرة…'};setTimeout(openLiqAlt,was?5000:1500);}
+    renderHealth();renderLiqNote();};
+}
+function closeLiqAlt(){if(liqAlt.ws){try{liqAlt.ws.onclose=null;liqAlt.ws.close();}catch(e){}}liqAlt.ws=null;liqAlt.on=false;clearInterval(liqAlt.ping);liqAlt.ping=null;}
+async function liqAltCtVal(){try{const j=await jget('https://www.okx.com/api/v5/public/instruments?instType=SWAP');if(j&&Array.isArray(j.data))for(const i of j.data){if(/-USDT-SWAP$/.test(i.instId)&&+i.ctVal>0)liqAlt.ctVal[i.instId]=+i.ctVal;}}catch(e){}}
 function liqOkx(){const m=cross.multi;return m&&m.totals&&m.totals.liq1h&&Date.now()-(m.t||0)<20*60e3?m.totals.liq1h:null;}
 function liqStatus(){
   if(!futOK)return{val:'—',sub:'لا futures لهالعملة',ok:true};
-  if(futStreamLive()||liq.long+liq.short>0)return{val:`L ${usd(liq.long)} / S ${usd(liq.short)}`,sub:wkState&&wkState.agg24?`24h worker: L ${usd(wkState.agg24.liqL||0)} / S ${usd(wkState.agg24.liqS||0)}`:'session (من فتح الصفحة)',ok:true};
+  if(futStreamLive())return{val:`L ${usd(liq.long)} / S ${usd(liq.short)}`,sub:wkState&&wkState.agg24?`24h worker: L ${usd(wkState.agg24.liqL||0)} / S ${usd(wkState.agg24.liqS||0)}`:'session (من فتح الصفحة)',ok:true};
+  if(liqAltLive())return{val:`L ${usd(liq.long)} / S ${usd(liq.short)}`,sub:`المصدر ${liqAltName()} مباشرة (stream Binance محجوب عندك) · session · ${liqAlt.n} تصفية بالـ watchlist`,ok:true,alt:true};
+  if(liq.long+liq.short>0)return{val:`L ${usd(liq.long)} / S ${usd(liq.short)}`,sub:'session (من فتح الصفحة)',ok:true};
   const o=liqOkx();if(o)return{val:`OKX 1h: L ${usd(o.long)} / S ${usd(o.short)}`,sub:'stream Binance محجوب عندك — المصدر OKX عبر الـ worker',ok:true,okx:true};
-  return{val:'بلا stream',sub:'stream الفيوتشر محجوب عندك — Binance ما عندها REST للتصفيات؛ الحل: worker (OKX) أو VPN',ok:false};
+  if(liqAlt.ws&&liqAlt.ws.readyState===0)return{val:'جاري الاتصال…',sub:`stream Binance محجوب عندك — عم أفتح ${liqAltName()} مباشرة`,ok:true,alt:true};
+  return{val:'بلا stream',sub:'stream الفيوتشر محجوب عندك وما قدرت أوصل لا Bybit ولا OKX من المتصفّح — الحل: worker أو VPN',ok:false};
 }
-function renderLiqNote(){const el=$('liqNote');if(!el)return;const st=liqStatus();el.innerHTML=st.ok&&!st.okx?(futPoll.on?'<span class="neu">الـ stream مقطوع — CVD والحيتان من بديل REST، التصفيات بدّها stream</span>':''):`<span class="${st.okx?'neu':'neg'}">${st.val}</span> — ${st.sub}`;}
+function renderLiqNote(){const el=$('liqNote');if(!el)return;const st=liqStatus();el.innerHTML=st.alt?`<span class="pos">التصفيات من ${liqAltName()} مباشرة</span> — stream Binance محجوب عندك؛ CVD والحيتان من بديل REST`:st.ok&&!st.okx?(futPoll.on?'<span class="neu">الـ stream مقطوع — CVD والحيتان من بديل REST، التصفيات عم تجرّب Bybit/OKX</span>':''):`<span class="${st.okx?'neu':'neg'}">${st.val}</span> — ${st.sub}`;}
 function wsWatchdog(){const n=Date.now();
   if(!spotWS||spotWS.readyState>1)openSpotWS();
   else if(spotWS.readyState===1&&wsLast.spot&&n-wsLast.spot>45e3){health.spotws={ok:false,t:n,err:'stale — إعادة اتصال'};openSpotWS();}
   if(futOK){if(!futWS||futWS.readyState>1)openFutWS();else if(futWS.readyState===1&&wsLast.fut&&n-wsLast.fut>120e3){health.futws={ok:false,t:n,err:'stale — إعادة اتصال'};openFutWS();}}
   if(liqAllWS&&liqAllWS.readyState===1&&wsLast.liq&&n-wsLast.liq>300e3){health.liqall={ok:false,t:n,err:'stale'};wsKill(liqAllWS);liqAllWS=null;openLiqAll();}
+  if(liqAltLive()&&wsLast.liq&&n-wsLast.liq>20*60e3){closeLiqAlt();openLiqAlt();}
   if(WHALE_ALL==='on'&&whaleAllWS&&whaleAllWS.readyState===1&&wsLast.whale&&n-wsLast.whale>120e3){health.whaleall={ok:false,t:n,err:'stale'};wsKill(whaleAllWS);whaleAllWS=null;whaleAllKey='';openWhaleAll();}
 }
 function feedAdd(id,html){const f=$(id);const div=document.createElement('div');div.innerHTML=html;f.prepend(div);while(f.children.length>60)f.lastChild.remove();}
@@ -2224,7 +2340,6 @@ function renderBias(reg,conf,ev){
 /* ================== TREND / STRUCTURE / LEVELS ================== */
 function pivots(n=5,span=120){return fPivots(candles,n,span);}
 function structure(){return fStructure(candles);}
-function trendFactor(){return fTrend(candles,mtf);}
 function buildLevels(){
   const p=lastPrice||(candles.length?candles[candles.length-1].close:0);if(!p||candles.length<60)return;
   lv=fLevels({candles,p,dayInfo,vwap,tf:TF,walls:{bid:ob.wallBid,ask:ob.wallAsk},extra:extraLevels()});renderLevels();
@@ -2235,12 +2350,6 @@ function renderLevels(){
   const row=(l,c)=>`<div class="lvl ${c}" title="${l.full||l.name}"><span>${l.name}</span><b>${fp(l.p)} <small>${sign(l.p-p)}${((l.p-p)/p*100).toFixed(2)}%</small></b></div>`;
   box.innerHTML=res.map(l=>row(l,'res')).join('')+`<div class="lvl now"><span>السعر الآن</span><b>${fp(p)}</b></div>`+sup.map(l=>row(l,'sup')).join('')
    +(dayATR?`<div class="mini" style="margin-top:6px">ATR يومي ${fp(dayATR)} (±${(dayATR/p*100).toFixed(2)}%) — استُهلك اليوم ${todayRange?Math.round(todayRange/dayATR*100):0}% ${todayRange&&todayRange/dayATR>1.2?'<span class="neg">⚠️ ممدود</span>':''}</div>`:'');
-}
-function drawLevelLines(){
-  if(!candleSeries)return;
-  if(lvLines.length){lvLines.forEach(l=>{try{candleSeries.removePriceLine(l);}catch(e){}});lvLines=[];$('lvlDraw').textContent='ارسم المستويات عالـ chart';return;}
-  const p=lastPrice;lv.filter(l=>l.strength>=2&&Math.abs(l.p-p)/p<0.08).forEach(l=>{lvLines.push(candleSeries.createPriceLine({price:l.p,color:l.p>p?'rgba(239,68,68,.7)':'rgba(34,197,94,.7)',lineWidth:1,lineStyle:3,axisLabelVisible:true,title:l.name.split(' + ')[0]}));});
-  $('lvlDraw').textContent='امسح المستويات';showTab('detail');
 }
 $('lvlDraw').onclick=()=>{if(DRAW.on){drawToggle(false);$('lvlDraw').textContent='🎨 ارسم المستويات عالـ chart';}else{drawToggle(true);$('lvlDraw').textContent='امسح الرسم';showTab('detail');setTimeout(()=>{try{$('chartCard').scrollIntoView({behavior:'smooth',block:'start'});}catch(e){}},80);}};
 /* ================== v10.8: 🎨 الرسم الاحترافي على الشارت ==================
@@ -2395,7 +2504,6 @@ function renderFlows(){
     const re=$('rvolS');re.textContent=rv?rv.toFixed(2)+'×':'—';re.className='v '+(rv>1.5?'pos':rv<0.6?'neg':'neu');
   }
 }
-function flowFactor(){return fFlowFactor(flowCtx());}
 function renderCVDHist(){
   if(!cvdS)return;let c=0;const sp=candles.map(k=>{c+=k.delta*k.close;return{time:k.time,value:c};});
   try{cvdS.setData(sp);if(cvdHist.fut.length)cvdF.setData(cvdHist.fut);}catch(e){}
@@ -2947,9 +3055,8 @@ $('walletsReset').onclick=()=>{localStorage.removeItem('fam_wallets');walletsFil
 /* ---- v10.1: بيانات كل العملات (نفس مصادر العملة المفتوحة لكل عملة بالمسح) ---- */
 function ringPush(map,s,item){const a=map[s]||(map[s]=[]);a.push(item);if(a.length>4000)a.splice(0,a.length-4000);}
 function ringPrune(map,s){const a=map[s];if(!a)return[];const cut=Date.now()-RING_MS;let i=0;while(i<a.length&&a[i].t<cut)i++;if(i)a.splice(0,i);return a;}
-function whaleMinVal(){return whaleMinFor(PAIR);}
 function whaleCtx(s){const a=ringPrune(whaleAll,s);let B=0,S=0;for(const x of a){if(x.buy)B+=x.q;else S+=x.q;}return{buy:B,sell:S,n:a.length,min:whaleMinFor(s)};}
-function liqCtxFor(s,hasFut){if(hasFut===false)return null;if(!liqAllWS||liqAllWS.readyState!==1)return null;const a=ringPrune(liqAll,s);let L=0,S=0;for(const x of a){if(x.long)L+=x.v;else S+=x.v;}return{long:L,short:S,n:a.length,win:'1h'};}
+function liqCtxFor(s,hasFut){if(hasFut===false)return null;if(!((liqAllWS&&liqAllWS.readyState===1)||liqAltLive()))return null;const a=ringPrune(liqAll,s);let L=0,S=0;for(const x of a){if(x.long)L+=x.v;else S+=x.v;}return{long:L,short:S,n:a.length,win:'1h'};}
 function rotCtxFor(s){const r=rot.rows.find(x=>x.s===s);if(!r||Date.now()-rot.t>20*60e3||rot.rows.length<5)return null;return{z:r.z,rank:r.rank,n:rot.rows.length,base:s.replace('USDT',''),verdict:rot.verdict};}
 function renderWhale1h(){const el=$('whale1h');if(!el)return;const w=whaleCtx(PAIR);const chp=$('whaleMinChip');if(chp)chp.textContent=(WHALE_AUTO&&QV[PAIR]>0?'تلقائي ':'يدوي ')+usd(whaleMinFor(PAIR));el.innerHTML=`<span class="pos">B ${usd(w.buy)}</span> / <span class="neg">S ${usd(w.sell)}</span> <small class="muted">${w.n} صفقة</small>`;}
 function renderWhaleAllBtn(){const b=$('whaleAllBtn');if(b){b.textContent='رادار الـ watchlist: '+(WHALE_ALL==='on'?'on':'off');b.className='small '+(WHALE_ALL==='on'?'pos':'');}}
@@ -2957,7 +3064,7 @@ function openLiqAll(){
   if(liqAllWS&&liqAllWS.readyState<=1)return;
   try{liqAllWS=new WebSocket('wss://fstream.binance.com/ws/!forceOrder@arr');}catch(e){hErr('liqall',e);return;}
   liqAllWS.onopen=()=>hOK('liqall',{note:'USDT-M'});
-  liqAllWS.onclose=()=>{health.liqall=futPoll.on?{ok:true,off:true,t:Date.now(),note:'stream الفيوتشر محجوب من شبكتك — التصفيات بدّها worker (OKX)'}:{ok:false,t:Date.now(),err:'closed'};liqAllWS=null;setTimeout(openLiqAll,5000);};
+  liqAllWS.onclose=()=>{if(!liqAltLive())health.liqall=futPoll.on?{ok:true,off:true,t:Date.now(),note:'stream الفيوتشر محجوب من شبكتك — التصفيات من Bybit/OKX مباشرة'}:{ok:false,t:Date.now(),err:'closed'};liqAllWS=null;setTimeout(openLiqAll,futPoll.on||liqAlt.on?60000:5000);};
   liqAllWS.onmessage=e=>{wsLast.liq=Date.now();try{const d=JSON.parse(e.data),o=d.o;if(!o)return;ringPush(liqAll,o.s,{t:+o.T||Date.now(),v:(+o.ap||+o.p)*+o.q,long:o.S==='SELL'});}catch(x){}};
 }
 function openWhaleAll(){
@@ -3029,7 +3136,7 @@ function coinSources(s,hasFut){
   else{put('OI/Funding',live&&fut.funding!=null&&fut.oiHist.length?'ok':x&&x.funding!=null&&x.oiH.length?'ok':'missing');
     put('Taker/LS',live&&fut.taker!=null&&fut.lsr!=null?'ok':x&&x.taker!=null&&x.lsr!=null&&x.topLsr!=null?'ok':'missing');
     put('Spot vs Fut',live&&flows.spot['24h']&&flows.fut['24h']?'ok':x&&x.sf?'ok':'missing');
-    put('التصفيات 1h',liqAllWS&&liqAllWS.readyState===1?'ok':'missing');}
+    put('التصفيات 1h',(liqAllWS&&liqAllWS.readyState===1)||liqAltLive()?'ok':'missing');}
   put('الحيتان 1h',live?(health.spotws&&health.spotws.ok?'ok':'missing'):!WATCH.includes(s)?'na':WHALE_ALL!=='on'?'off':(whaleAllWS&&whaleAllWS.readyState===1?'ok':'missing'));
   put('Coinbase premium',live&&crossPrem()!=null?'ok':x?(x.prem!=null?'ok':x.cbNA?'na':'missing'):'missing');
   put('Funding عبر البورصات',live&&crossXfund()!=null?'ok':x?(x.xfund!=null?'ok':x.xfundNA?'na':'missing'):'missing');
@@ -3331,15 +3438,202 @@ function renderHome(force){
   $('hSummary').innerHTML=$('summary').innerHTML;
   const hr=$('hRec');if(!r)hr.innerHTML='<div class="muted">بانتظار التوصية…</div>';else if(!r.dir)hr.innerHTML=`<div class="head"><span class="biaschip neu">⏸ ${r.verdict}</span></div><div class="note">${r.why.slice(0,2).map(w=>'• '+w).join('<br>')}</div>${backupBlock(r,true)}`;
   else hr.innerHTML=`<div class="head"><span class="biaschip ${r.dir==='long'?'pos':'neg'}">${r.dir==='long'?'📈 LONG':'📉 SHORT'} — ${r.setup}</span><span class="chip" title="جودة البنية — مش احتمال الربح">بنية ${r.score}/10</span>${r.setup&&r.setup.startsWith('range')?'<span class="chip neu">📐 range</span>':''}${r.blocked?'<span class="chip neg">🛑 ممنوع</span>':''}${srcSummary(PAIR).chip}${gateChip(r)}</div><div class="row"><span class="k">دخول</span><span class="v">${fp(r.entry)} <small class="muted">${r.mode==='limit'?'Limit':'Market'}</small></span></div><div class="row"><span class="k">Stop</span><span class="v neg">${fp(r.sl)}</span></div><div class="row"><span class="k">TP1 / TP2 / TP3</span><span class="v pos">${r.tps.map(t=>fp(t.p)).join(' / ')}</span></div><div class="row"><span class="k">المخاطرة</span><span class="v">${usd(r.risk)} · ${r.tps[0].r.toFixed(1)}R / ${r.tps[1].r.toFixed(1)}R</span></div>`;
-  const pb=$('homePlanBox');const ss=sessionNow(),evs=allEvents().map(e=>({...e,h:(new Date(e.t)-Date.now())/3600e3})).filter(e=>e.h>-1&&e.h<48).sort((a,b)=>a.h-b.h).slice(0,3);
-  pb.innerHTML=`<div class="miniLv">${lv.filter(l=>l.p>p).slice(0,3).reverse().map(l=>`<div class="lvl res"><span>${l.name.split(' + ')[0]}</span><b>${fp(l.p)}</b></div>`).join('')}${lv.filter(l=>l.p<p).slice(-3).reverse().map(l=>`<div class="lvl sup"><span>${l.name.split(' + ')[0]}</span><b>${fp(l.p)}</b></div>`).join('')}</div>
-   <div class="row" style="margin-top:8px"><span class="k">الجلسة</span><span class="v ${ss.c}">${ss.l}</span></div><div class="row"><span class="k">الحركة اليومية (ATR)</span><span class="v">${dayATR?'±'+fp(dayATR)+' · مستهلك '+Math.round((todayRange||0)/dayATR*100)+'%':'—'}</span></div>${o&&o.expMove?`<div class="row"><span class="k">حركة الأوبشن المتوقعة</span><span class="v">±${usd(o.expMove.d1)} اليوم</span></div>`:''}
-   <div class="row"><span class="k">أحداث 48h</span><span class="v" style="direction:rtl;text-align:right">${evs.length?evs.map(e=>`${e.title.split(' ')[0]} ${e.h<1?'الآن':'بعد '+e.h.toFixed(1)+'س'}`).join(' · '):'لا شي'}</span></div>
-   <div class="chips" style="margin-top:8px"><button class="small" data-go="read|levelsCard">المستويات</button><button class="small" data-go="news|calCard">الأجندة</button><button class="small" data-go="read|scenCard">السيناريوهات</button></div>`;
-  const fb=$('homeFlowBox');const sf=factors.find(f=>f.key==='sf'),fl=factors.find(f=>f.key==='flow'),oiF=factors.find(f=>f.key==='oi'),fd=factors.find(f=>f.key==='fund');
-  fb.innerHTML=`${fl?`<div class="factor"><div class="t"><span>💧 التدفّق</span><span class="${cls(fl.s)}">${sign(fl.c)}${fl.c.toFixed(1)}</span></div><div class="e">${fl.exp}</div></div>`:''}${sf?`<div class="factor"><div class="t"><span>⚖️ Spot vs Futures</span><span class="${cls(sf.s)}">${sign(sf.c)}${sf.c.toFixed(1)}</span></div><div class="e">${sf.exp}</div></div>`:''}${oiF?`<div class="factor"><div class="t"><span>🧲 OI مع السعر</span><span class="${cls(oiF.s)}">${sign(oiF.c)}${oiF.c.toFixed(1)}</span></div><div class="e">${oiF.exp}</div></div>`:''}${fd?`<div class="factor"><div class="t"><span>💸 Funding</span><span class="${cls(fd.s)}">${sign(fd.c)}${fd.c.toFixed(1)}</span></div><div class="e">${fd.exp}</div></div>`:''}${!fl&&!sf?'<div class="muted">جاري التحميل…</div>':''}
-   <div class="chips" style="margin-top:8px"><button class="small" data-go="flow|flowCard">جدول التدفّق</button><button class="small" data-go="flow|heatCard">خريطة التصفيات</button><button class="small" data-go="cross|crossCard">السوق الكلي</button><button class="small" data-go="read|factorsCard">كل العوامل</button></div>`;
+  try{renderDash(force);}catch(e){logErr('dash',e);}
 }
+
+/* ================== v11.1: الداشبورد الاحترافي (الرئيسية) ==================
+   صفحة وحدة بتحاكي كل اللي بالبرنامج: KPI حيّة، شارت مصغّر مع المستويات والخطة، التوصية + السيناريوهات + checklist،
+   السيولة والرافعة، المستويات والسيولة الراكدة، السياق (الأطر/الماكرو/on-chain/Options/الذهب)، المحاسبة، والتشغيل والتحديثات.
+   كل قسم بيقرأ من نفس الحالة اللي بتقرأ منها الكروت المفصّلة — ما في حساب منفصل. */
+let dchart=null,dseries=null,dLines=[],dLinesKey='',dDataKey='',dTick='',dRO=null,dashLast={fast:0,slow:0},dDrawCache={t:0,key:'',D:null};
+const dSafe=(f,where)=>{try{f();}catch(e){logErr('dash:'+where,e);}};
+const dShort=n=>String(n||'').split(' + ')[0].split(' (')[0].slice(0,22);
+const dPct=(a,b)=>b?((a-b)/b*100):null;
+function dMeter(v,lo,hi,col){const x=v==null||!isFinite(v)?null:Math.max(0,Math.min(100,(v-lo)/(hi-lo)*100));return`<span class="dm"><i style="width:${x==null?0:x}%;background:${col||'var(--blue)'}"></i><b style="left:${x==null?50:x}%"></b></span>`;}
+function dRow(k,v,sub,cls_){return`<div class="dr"><span class="dk">${k}</span><span class="dv ${cls_||''}">${v}${sub?`<small class="sub">${sub}</small>`:''}</span></div>`;}
+function dashDraw(){const key=PAIR+'|'+TF+'|'+candles.length;if(dDrawCache.D!==undefined&&dDrawCache.key===key&&Date.now()-dDrawCache.t<10e3)return dDrawCache.D;let D=null;try{D=buildDraw();}catch(e){D=null;}dDrawCache={t:Date.now(),key,D};return D;}
+function initDashChart(){const el=$('dshChart');if(!el)return false;if(dchart)return true;if(typeof LightweightCharts==='undefined')return false;
+  try{dchart=LightweightCharts.createChart(el,{layout:{background:{color:'#0f1522'},textColor:'#8b97b1',fontFamily:'Cairo'},grid:{vertLines:{color:'#1b2438'},horzLines:{color:'#1b2438'}},rightPriceScale:{borderColor:'#233049'},timeScale:{borderColor:'#233049',timeVisible:true,secondsVisible:false},localization:{locale:'en-US'}});
+    dseries=dchart.addCandlestickSeries({upColor:'#22c55e',downColor:'#ef4444',wickUpColor:'#22c55e',wickDownColor:'#ef4444',borderVisible:false});
+    dRO=new ResizeObserver(()=>{if(el.clientWidth&&dchart)dchart.applyOptions({width:el.clientWidth,height:el.clientHeight||280});});dRO.observe(el);return true;}
+  catch(e){logErr('dash:chart',e);dchart=null;return false;}}
+function dLine(price,color,title,style,width){return{price,color,lineWidth:width||1,lineStyle:style==null?2:style,axisLabelVisible:true,title};}
+function dashTick(c){if(!dchart||!dseries||!c)return;const tk=c.time+'|'+c.close+'|'+c.high+'|'+c.low;if(tk===dTick)return;dTick=tk;try{dseries.update({time:c.time,open:c.open,high:c.high,low:c.low,close:c.close});}catch(e){}}
+function renderDashChart(){
+  if(!initDashChart())return;if(!candles.length||!lastPrice)return;
+  const small=innerWidth<700,N=small?80:140,cs=candles.slice(-N),last=cs[cs.length-1];
+  const pk=PAIR+'|'+TF+'|'+candles.length+'|'+N;
+  if(pk!==dDataKey){dDataKey=pk;dseries.setData(cs.map(c=>({time:c.time,open:c.open,high:c.high,low:c.low,close:c.close})));try{dchart.timeScale().fitContent();}catch(e){}dTick='';}
+  else dashTick(last);
+  const p=lastPrice,r=lastRec,want=[];
+  const near=lv.filter(l=>l.strength>=2&&Math.abs(l.p-p)/p<0.05);
+  near.filter(l=>l.p<p).slice(-2).forEach(l=>want.push(dLine(l.p,'rgba(34,197,94,.8)',dShort(l.name),2,1)));
+  near.filter(l=>l.p>p).slice(0,2).forEach(l=>want.push(dLine(l.p,'rgba(239,68,68,.8)',dShort(l.name),2,1)));
+  if(r&&r.dir){want.push(dLine(r.entry,'#3b82f6','دخول '+(r.mode==='limit'?'Limit':'Market'),0,2));want.push(dLine(r.sl,'#ef4444','Stop',0,2));if(r.tps[0])want.push(dLine(r.tps[0].p,'#22c55e','TP1',0,1));if(r.tps[1])want.push(dLine(r.tps[1].p,'#22c55e','TP2',0,1));}
+  const D=dashDraw();if(D){if(D.hsup&&Math.abs(D.hsup.p-p)/p<0.05)want.push(dLine(D.hsup.p,'rgba(74,222,128,.9)',D.hsup.tf+' دعم',3,1));if(D.hres&&Math.abs(D.hres.p-p)/p<0.05)want.push(dLine(D.hres.p,'rgba(248,113,113,.9)',D.hres.tf+' مقاومة',3,1));}
+  const lk=JSON.stringify(want.map(w=>[+(+w.price).toFixed(6),w.title]));
+  if(lk!==dLinesKey){dLinesKey=lk;dLines.forEach(l=>{try{dseries.removePriceLine(l);}catch(e){}});dLines=want.map(w=>{try{return dseries.createPriceLine(w);}catch(e){return null;}}).filter(Boolean);}
+  const meta=$('dshChartMeta');if(meta)meta.textContent=`${base()} · ${TF} · آخر ${cs.length} شمعة · ${fp(p)}`;
+  const lg=$('dshChartLegend');if(lg)lg.innerHTML=`<span><i style="background:#22c55e"></i>دعم</span><span><i style="background:#ef4444"></i>مقاومة</span><span><i style="background:#3b82f6"></i>دخول</span><span><i style="background:#ef4444;height:3px"></i>Stop</span><span><i style="background:#22c55e;height:3px"></i>TP</span>${D&&(D.hsup||D.hres)?'<span><i style="background:#f87171;border-top:1px dotted #fff"></i>1h/4h</span>':''}<span class="muted">نفس مستويات المحرّك اللي بتنحسب عليها التوصية — الرسم الكامل بكرت الشارت 🎨</span>`;
+  [...document.querySelectorAll('#dshTf button')].forEach(b=>b.classList.toggle('active',b.dataset.dtf===TF));
+}
+function renderDashKpis(){
+  const el=$('dshKpis');if(!el)return;const p=lastPrice,r=lastRec,ev=nearestEvent(),ss=sessionNow();
+  const chg=$('tChg').textContent||'—',chgN=parseFloat(chg)||0;
+  const open=getT().filter(x=>x.status==='open'||x.status==='be'),upnl=open.reduce((a,x)=>a+(x.upnl||0),0),closed=getT().filter(x=>x.status==='closed'&&!x.expired),w=closed.filter(x=>x.pnl>0).length;
+  const rs=(()=>{try{return riskState();}catch(e){return null;}})(),EG=(()=>{try{return edgeState();}catch(e){return{n:0,ok:true};}})();
+  const hOK=Object.values(health).filter(h=>h&&h.ok&&!h.na&&!h.off).length,hErr=Object.keys(health).filter(k=>health[k]&&health[k].ok===false),hTot=Object.values(health).filter(h=>h&&!h.na&&!h.off).length;
+  const acc=btAccFor(PAIR,TF),J=getJ(),jd=J.filter(e=>e.ok!==null&&e.after!=null),jok=jd.filter(e=>e.ok).length;
+  const best=bestState.list[0];
+  const k=(cls_,label,icon,val,sub,go,extra)=>`<div class="kc ${cls_||''}" data-go="${go}"><div class="kl"><span>${label}</span><i>${icon}</i></div><div class="kv">${val}</div><div class="ks">${sub||''}</div>${extra||''}</div>`;
+  const priceSpark=candles.length?spark(candles.slice(-80).map(c=>c.close),chgN>=0?'#22c55e':'#ef4444',120,26):'';
+  el.innerHTML=[
+    k(cls(chgN),'السعر '+base(),'💱',p?fp(p):'—',chg+' / 24h · '+(chgN>=0?'▲':'▼'),'detail|chartCard',priceSpark?`<div class="ksp">${priceSpark}</div>`:''),
+    k(cls(bias.score),'الميل','🎯',bias.label||'—',`احتمال ${dprob(bias)}%${bias.conf!=null?' · ثقة '+Math.round(bias.conf*100)+'%':''}`,'read|biasCard',dMeter(bias.prob,0,100,'linear-gradient(90deg,var(--red),var(--amber),var(--green))')),
+    k(r&&r.dir?(r.blocked?'neg':r.gated?'neu':r.dir==='long'?'pos':'neg'):'neu','التوصية','🧭',r?(r.dir?`${r.dir==='long'?'📈 LONG':'📉 SHORT'}${r.tscore!=null?' · '+r.tscore+'/100':''}`:'⏸ انتظار'):'—',r?(r.dir?`${r.mode==='limit'?'Limit':'Market'} ${fp(r.entry)} · SL ${fp(r.sl)}${r.gated?' · 🚪 ما بتمرق':r.gate&&r.gate.ok?' · 🚪 بتمرق':''}${r.blocked?' · 🛑':''}`:r.verdict):'بانتظار البيانات','read|recCard'),
+    k(best?(best.score>=70?'pos':best.score>=55?'neu':''):'','🏆 أفضل صفقة','🏆',best?`${best.pair.replace('USDT','')} ${best.dir.toUpperCase()} ${best.score}/100`:'اكبس 🎯 حدّد صفقة',best?`${best.tf} · ${best.setup}`.slice(0,42):(bestState.running?'جاري المسح…':'مسح كل الـ watchlist × 3 أطر'),'home|bestCard'),
+    k(open.length?cls(upnl):'','الصفقات الورقية','📋',open.length?`${open.length} مفتوحة · ${sign(upnl)}${usd(upnl)}`:'ما في مفتوحة',closed.length?`${closed.length} مقفولة · win ${Math.round(w/closed.length*100)}%${EG.n?' · edge '+sign(EG.exp)+EG.exp.toFixed(2)+'R':''}`:'ابدأ بصفقة ورقية','track|trackCard'),
+    k(rs?(rs.dayPct<=-RK.day?'neg':rs.dayPct<=-RK.day*0.6?'neu':'pos'):'','المخاطرة اليوم','🛡',rs?`${sign(rs.dayPct)}${rs.dayPct.toFixed(2)}%`:'—',rs?`الحدّ -${RK.day}% · الأسبوع ${sign(rs.weekPct)}${rs.weekPct.toFixed(1)}% · ${rs.openN} مفتوحة`:'','settings|riskCard',rs?dMeter(-rs.dayPct,0,RK.day,rs.dayPct<=-RK.day*0.6?'var(--red)':'var(--amber)'):''),
+    k(acc?(acc.acc>=58?'pos':acc.acc<=50?'neg':'neu'):'cyan','دقة البرنامج','🎯',jd.length>=10?`${Math.round(jok/jd.length*100)}% حيّة (n=${jd.length})`:acc?`backtest ${acc.acc}%`:'لسا',acc?`backtest ${base()} ${TF}: ${acc.acc}% (n=${acc.n}${acc.days?' · '+acc.days+' يوم':''})`:'شغّل الاختبار الخلفي بتبويب الاختبار','bt|btCard'),
+    k(hErr.length?'neg':'pos','صحّة البيانات','🩺',`${hOK}/${hTot} OK${hErr.length?' · '+hErr.length+' ❌':''}`,hErr.length?'❌ '+hErr.slice(0,3).map(k2=>(H_NAME[k2]||k2).split(' (')[0]).join('، '):(WK.url?'كل المصادر شغّالة · worker متصل':'كل المصادر شغّالة — بدون worker'),'settings|healthCard',dMeter(hTot?hOK/hTot*100:0,0,100,hErr.length?'var(--amber)':'var(--green)')),
+    k(ev&&evPhase(ev.hours)!=='none'?'neg':ev&&ev.hours<24?'neu':'','الحدث القادم','📅',ev?evShort(ev.title):'ما في حدث مؤثر',ev?evWhen(ev.hours)+' · '+evLocal(ev.t):'الأجندة فاضية 48h','news|calCard'),
+    k(ss.c==='pos'?'pos':ss.c==='neu'?'neu':'','الجلسة','🕒',ss.l,ss.i,'read|macroCard')
+  ].join('');
+}
+function renderDashPlan(){
+  const el=$('dshPlan');if(!el)return;const r=lastRec,p=lastPrice;let h='';
+  if(!r)h='<div class="muted">بانتظار البيانات…</div>';
+  else if(!r.dir)h=`<div class="rec"><div class="head"><span class="biaschip neu">⏸ ${r.verdict}</span></div><div class="note">${(r.why||[]).slice(0,3).map(x=>'• '+x).join('<br>')}${r.watch?'<br><b>راقب:</b> '+r.watch:''}</div></div>`;
+  else{const m=r.dir==='long'?1:-1,dist=Math.abs(r.entry-r.sl),dPctS=(dist/r.entry*100).toFixed(2);let ck=null;try{ck=preTradeCheck({pair:PAIR,tf:TF,dir:r.dir,entry:r.entry,sl:r.sl,tps:r.tps.map(t=>t.p),mode:r.mode,kind:null,gate:r.gate||null,pct:r.pct});}catch(e){}
+    h=`<div class="rec"><div class="head"><span class="biaschip ${r.dir==='long'?'pos':'neg'}">${r.dir==='long'?'📈 LONG':'📉 SHORT'} — ${r.setup}</span>${r.tscore!=null?`<span class="chip" title="Trade Score من 100 — كل العوامل والعقوبات">Score ${r.tscore}/100</span>`:''}<span class="chip" title="جودة البنية /10">بنية ${r.score}/10</span>${gateChip(r)}${r.blocked?'<span class="chip neg">🛑 ممنوع</span>':''}</div>
+      ${dRow('دخول',`${fp(r.entry)} <small class="muted">${r.mode==='limit'?'Limit':'Market'}</small>`)}${dRow('Stop',fp(r.sl),`${dPctS}%`,'neg')}${dRow('الأهداف',r.tps.map(t=>fp(t.p)).join(' / '),r.tps.map(t=>t.r!=null?t.r.toFixed(1)+'R':'').filter(Boolean).join(' / '),'pos')}${dRow('المخاطرة',`${usd(r.risk||0)} (${r.pct||1}%)`,r.qty?`كمية ${fmt(r.qty,4)} · قيمة ${usd(r.val||0)}`:'')}
+      ${ck?`<div class="dck"><b>📋 checklist لو فتحت هلق:</b> <span class="pos">✅ ${ck.items.length-ck.bad-ck.warn}</span> · <span class="neu">⚠️ ${ck.warn}</span> · <span class="neg">❌ ${ck.bad}</span>${ck.bad?'<div class="mini">'+ck.items.filter(x=>x.st==='bad').slice(0,2).map(x=>'❌ '+x.k+': '+x.txt).join('<br>')+'</div>':ck.warn?'<div class="mini">'+ck.items.filter(x=>x.st==='warn').slice(0,1).map(x=>'⚠️ '+x.k+': '+x.txt).join('')+'</div>':''}</div>`:''}
+      ${r.against&&r.against.length?`<div class="mini" style="margin-top:6px"><b>ضدّ:</b> ${r.against.slice(0,2).join(' · ')}</div>`:''}
+    </div>`;}
+  const sc=lastScen,S=sc?scenBtFor(PAIR,TF):null;let sh='';
+  if(sc&&sc.list&&sc.list.length){const list=sc.list.slice().sort((a,b)=>(b.fav?1:0)-(a.fav?1:0)||(b.strong?1:0)-(a.strong?1:0)).slice(0,3);
+    sh=`<div class="dsub">🌳 السيناريوهات الجاهزة <small class="muted">${sc.list.length} سيناريو · «إذا صار X اعمل Y»</small></div>`+list.map(x=>{const st=S&&S.stats&&S.stats[x.kind],v=st&&st.n?scenVerdict(st):null;return`<div class="dsc ${x.dir==='long'?'l':'s'}"><div class="t"><span>${x.icon||''} ${x.title}</span><span class="${x.dir==='long'?'pos':'neg'}">${x.dir.toUpperCase()} · 1:${x.rr2?x.rr2.toFixed(1):'—'}</span></div><div class="e">${x.cond}</div><div class="e"><span class="chip ${x.fav?'pos':''}" style="padding:1px 7px">${x.fav?'الأرجح':'بديل'}</span>${st&&st.n?` <span class="chip ${v?v.cls:''}" style="padding:1px 7px" title="نتيجة هالنوع على التاريخ (${S.days||''} يوم)">${st.n} صفقة · ${sign(st.sumR/st.n)}${(st.sumR/st.n).toFixed(2)}R/صفقة ${v?v.txt:''}</span>`:' <span class="muted">(ما انختبر بعد — زر «اختبر السيناريوهات» بتبويب الاختبار)</span>'}</div></div>`;}).join('');}
+  el.innerHTML=h+sh+`<div class="chips" style="margin-top:8px"><button class="small primary" data-go="read|recCard">🧭 التوصية الكاملة</button><button class="small" data-act="plan">🎯 انقلها للمخطّط</button><button class="small" data-go="read|scenCard">🌳 كل السيناريوهات</button><button class="small" data-go="trade|planCard">📋 المخطّط</button></div>`;
+}
+function renderDashFlow(){
+  const el=$('dshFlowBox');if(!el)return;const f1=flows.spot['1h'],f4=flows.spot['4h'],f24=flows.spot['24h'],T=cross.multi&&cross.multi.totals;
+  const fl=factors.find(f=>f.key==='flow'),sf=factors.find(f=>f.key==='sf'),oiF=factors.find(f=>f.key==='oi'),fd=factors.find(f=>f.key==='fund');
+  const imb=(ob.bid+ob.ask)?(ob.bid-ob.ask)/(ob.bid+ob.ask)*100:null,ls=liqStatus(),w1=(()=>{try{return whaleCtx(PAIR);}catch(e){return null;}})();
+  const bars=f24?`<span class="bars" style="display:inline-flex;height:16px;vertical-align:middle;margin-inline-start:6px">${[f1,f4,f24].map(f=>{const mx=Math.max(Math.abs(f1.net),Math.abs(f4.net),Math.abs(f24.net))||1;return`<b class="${f.net<0?'n':''}" style="width:10px;height:${Math.max(2,Math.abs(f.net)/mx*16)}px"></b>`;}).join('')}</span>`:'';
+  el.innerHTML=`
+    ${dRow('تدفّق spot 1h / 4h / 24h',f24?`<span class="${cls(f1.net)}">${sign(f1.net)}${usd(f1.net)}</span> / <span class="${cls(f4.net)}">${sign(f4.net)}${usd(f4.net)}</span> / <span class="${cls(f24.net)}">${sign(f24.net)}${usd(f24.net)}</span>${bars}`:'—',fl?fl.exp:'')}
+    ${dRow('OI: التغيّر 24h · الآن',flows.oiv['24h']!=null?`<span class="${cls(flows.oiv['24h'])}">${sign(flows.oiv['24h'])}${usd(flows.oiv['24h'])}</span>${fut.oi?' · '+fmt(fut.oi,0)+' '+base():''}`:(futOK?'جاري…':'لا futures'),oiF?oiF.exp:'')}
+    ${dRow('Funding',fut.funding!=null?`${(fut.funding*100).toFixed(4)}%${T&&T.fundW!=null?' <small class="muted">السوق '+T.fundW.toFixed(4)+'%</small>':''} ${dMeter(fut.funding*100,-0.1,0.1,fut.funding>0.0005?'var(--red)':fut.funding<-0.0002?'var(--green)':'var(--amber)')}`:'—',fd?fd.exp:(fut.funding!=null?(fut.funding>0.0005?'funding عالي — الأغلبية long = وقود للهبوط':fut.funding<-0.0002?'funding سلبي — الأغلبية short = وقود للصعود':'طبيعي'):''))}
+    ${dRow('Long/Short · Top traders · Taker',fut.lsr!=null?`${fut.lsr.toFixed(2)} · ${fut.topLsr!=null?fut.topLsr.toFixed(2):'—'} · ${fut.taker!=null?fut.taker.toFixed(2):'—'} ${dMeter(fut.taker,0.7,1.3,fut.taker>1.1?'var(--green)':fut.taker<0.9?'var(--red)':'var(--amber)')}`:'—',fut.taker!=null?(fut.taker>1.1?'Taker شراء عدواني':fut.taker<0.9?'Taker بيع عدواني':'Taker متوازن'):'')}
+    ${dRow('Spot vs Futures',sf?`<span class="${cls(sf.s)}">${sign(sf.c)}${sf.c.toFixed(1)}</span>`:'—',sf?sf.exp:'')}
+    ${dRow('Order book — 20 مستوى',imb!=null?`<span class="${cls(imb)}">${sign(imb)}${imb.toFixed(1)}%</span> ${dMeter(imb,-50,50,imb>0?'var(--green)':'var(--red)')}${ob.rest?' <small class="muted">REST</small>':''}`:'—',ob.wallBid&&ob.wallBid[1]?`جدار شراء ${usd(ob.wallBid[1])} @ ${fp(ob.wallBid[0])} · جدار بيع ${usd(ob.wallAsk[1])} @ ${fp(ob.wallAsk[0])}`:'')}
+    ${dRow('CVD session (spot / futures)',cvdN>50?`<span class="${cls(cvdSpot)}">${sign(cvdSpot)}${usd(cvdSpot)}</span> / <span class="${cls(cvdFut)}">${sign(cvdFut)}${usd(cvdFut)}</span>`:'بيبلّش من فتح الصفحة',cvdN>50?(cvdSpot>0&&cvdFut>0?'شراء على الجهتين':cvdSpot<0&&cvdFut<0?'بيع على الجهتين':'spot وfutures مش متفقين — حذر'):'')}
+    ${dRow('Liquidations',`<span class="${!ls.ok?'neu':''}">${ls.val}</span>`,ls.sub)}
+    ${dRow('حيتان (فوق '+usd(whaleMinFor(PAIR))+')',`<span class="pos">B ${usd(whale.buy)}</span> / <span class="neg">S ${usd(whale.sell)}</span>`,w1&&w1.n?`رادار آخر ساعة: B ${usd(w1.buy)} / S ${usd(w1.sell)} (${w1.n} صفقة)`:'session من فتح الصفحة')}
+    ${dRow('Coinbase premium · OI السوق',T&&T.prem!=null?`<span class="${T.prem>0.03?'pos':T.prem<-0.03?'neg':''}">${sign(T.prem)}${T.prem.toFixed(3)}%</span>${T.oiUsd?' · '+usd(T.oiUsd):''}`:'بدّو worker',T&&T.prem!=null?(T.prem>0.03?'أميركا بتشتري أغلى من Binance — طلب مؤسّسي':T.prem<-0.03?'أميركا بتبيع أرخص — ضغط مؤسّسي':'ما في فرق واضح'):'البورصات الأخرى (Bybit/OKX/HL/Coinbase) بتجي عبر الـ worker')}
+    <div class="chips" style="margin-top:8px"><button class="small" data-go="flow|flowCard">💧 جدول التدفّق</button><button class="small" data-go="flow|levCard">🧲 الرافعة</button><button class="small" data-go="detail|obCard">📚 Order book</button><button class="small" data-go="detail|whaleCard">🐋 الحيتان</button><button class="small" data-go="flow|heatCard">🔥 خريطة التصفيات</button><button class="small" data-go="cross|crossCard">🌐 البورصات</button></div>`;
+}
+function renderDashLevels(){
+  const el=$('dshLvlBox');if(!el)return;const p=lastPrice,D=dashDraw(),o=cross.opt,ss=sessionNow();
+  const evs=allEvents().map(e=>({...e,h:(new Date(e.t)-Date.now())/3600e3})).filter(e=>e.h>-1&&e.h<48).sort((a,b)=>a.h-b.h).slice(0,3);
+  const star=n=>'★'.repeat(Math.max(1,Math.min(4,Math.round(n||1))));
+  const zone=z=>z?`${fp(z.p)} <small class="muted">${dShort(z.name)} ${star(z.strength)} · ${sign(z.dist)}${Math.abs(z.dist).toFixed(2)}%${z.held?' · صمدت ×'+z.held:''}</small>`:'—';
+  const sup=lv.filter(l=>l.p<p).slice(-3).reverse(),res=lv.filter(l=>l.p>p).slice(0,3);
+  el.innerHTML=`
+    ${dRow('الهيكل · الوضع',D&&D.st?`<span class="${/صاعد|HH/.test(D.st.label)?'pos':/هابط|LL/.test(D.st.label)?'neg':'neu'}">${D.st.label}</span> · ${D.reg?D.reg.label:'—'}`:(regime()?regime().label:'—'),D&&D.box?`رينج ${fp(D.box.lo)} ↔ ${fp(D.box.hi)}`:D&&D.chan?'قناة EMA — ترند':'')}
+    ${dRow('القاع الجديد',D&&D.curLow?`<span class="${D.lowBroken?'neg':'pos'}">${fp(D.curLow.low)}</span>`:'—',D?(D.lowBroken?'✗ انكسر — قاع جديد عم يتكوّن':'✓ صامد — الستوبات تحتو'):'')}
+    ${dRow('الحد الأعلى',D&&D.curHigh?`<span class="${D.highBroken?'pos':'neg'}">${fp(D.curHigh.high)}</span>`:'—',D?(D.highBroken?'✗ انكسر — السقف طار':'✓ صامد — سقف الحركة الحالية'):'')}
+    ${dRow('أقرب دعم (منطقة)',zone(D&&D.sup),D&&D.hsup?`الإطار الأكبر ${D.hsup.tf}: ${fp(D.hsup.p)} ${dShort(D.hsup.name)} ${star(D.hsup.strength)}`:'')}
+    ${dRow('أقرب مقاومة (منطقة)',zone(D&&D.res),D&&D.hres?`الإطار الأكبر ${D.hres.tf}: ${fp(D.hres.p)} ${dShort(D.hres.name)} ${star(D.hres.strength)}`:'')}
+    ${dRow('السيولة الراكدة',D?`${D.eqH.length?'قمم متساوية فوق: '+D.eqH.slice(0,2).map(v=>fp(v.p)).join('، '):'—'} · ${D.eqL.length?'قيعان متساوية تحت: '+D.eqL.slice(0,2).map(v=>fp(v.p)).join('، '):'—'}`:'—',D&&(D.eqH.length||D.eqL.length)?'ستوبات متجمّعة — هدف للكسر الكاذب (سيناريو 🎣)':'ما في قمم/قيعان متساوية قريبة')}
+    <div class="miniLv" style="margin:6px 0">${res.reverse().map(l=>`<div class="lvl res"><span>${dShort(l.name)}</span><b>${fp(l.p)}</b></div>`).join('')}${sup.map(l=>`<div class="lvl sup"><span>${dShort(l.name)}</span><b>${fp(l.p)}</b></div>`).join('')}</div>
+    ${dRow('الجلسة',`<span class="${ss.c}">${ss.l}</span>`,ss.i)}
+    ${dRow('الحركة اليومية (ATR)',dayATR?`±${fp(dayATR)} · مستهلك ${Math.round((todayRange||0)/dayATR*100)}%`:'—',o&&o.expMove?`الأوبشن بتتوقّع ±${usd(o.expMove.d1)} اليوم`:'')}
+    ${dRow('أحداث 48h',evs.length?evs.map(e=>`${e.title.split(' ')[0]} ${e.h<1?'الآن':'بعد '+e.h.toFixed(1)+'س'}`).join(' · '):'لا شي')}
+    <div class="chips" style="margin-top:8px"><button class="small primary" data-act="draw">🎨 ارسم على الشارت</button><button class="small" data-go="read|levelsCard">📏 كل المستويات</button><button class="small" data-go="news|calCard">📅 الأجندة</button></div>`;
+}
+function renderDashCtx(){
+  const el=$('dshCtxBox');if(!el)return;const T=cross.multi&&cross.multi.totals,o=cross.opt,mm=(()=>{try{return macroMood('crypto');}catch(e){return null;}})(),mg=(()=>{try{return macroMood('gold');}catch(e){return null;}})();
+  const tfc=['15m','1h','4h','1d'].map(tf=>{const b=mtf[tf];return`<span class="chip ${b?(b.s>0.12?'pos':b.s<-0.12?'neg':'neu'):''}">${tf} ${b?(b.s>0.12?'▲':b.s<-0.12?'▼':'•'):'…'}</span>`;}).join('');
+  const y10=mSer('y10'),y2=mSer('y2'),wti=mSer('wti')||mSer('brent');
+  const hot=news.items.filter(i=>i.imp>=3&&Date.now()-i.t<6*3600e3).length,ev=nearestEvent();
+  const rr=rot.rows.find(x=>x.s===PAIR);
+  el.innerHTML=`
+    ${dRow('توافق الأطر',`<span class="chips" style="display:inline-flex;gap:4px">${tfc}</span>`,'▲ صعودي · ▼ هبوطي · • محايد — الأطر الأكبر أثقل بالقرار')}
+    ${dRow('مزاج الماكرو',mm?`<span class="${mm.cls}">${mm.label}</span>`:'—',mm&&mm.reasons.length?mm.reasons.slice(0,2).join(' · '):(cross.macro||cross.dxy?'':'بدّو worker أو مفتاح Alpha Vantage (الإعدادات)'))}
+    ${dRow('DXY · سندات 10Y · 2Y · نفط',`${cross.dxy?cross.dxy.now.toFixed(2)+(cross.dxy.d7?' <small class="'+(cross.dxy.now>cross.dxy.d7?'neg':'pos')+'">'+sign(dPct(cross.dxy.now,cross.dxy.d7))+dPct(cross.dxy.now,cross.dxy.d7).toFixed(1)+'% 7d</small>':''):'—'} · ${y10?y10.now.toFixed(2)+'%':'—'} · ${y2?y2.now.toFixed(2)+'%':'—'} · ${wti?'$'+wti.now.toFixed(1):'—'}`,y10&&y2?`2s10s ${sign(y10.now-y2.now)}${(y10.now-y2.now).toFixed(2)}% ${y10.now-y2.now<0?'(منحنى مقلوب)':''}`:'')}
+    ${dRow('Fear & Greed · الهيمنة · Stablecoins',`${macro.fng!=null?`<span class="${macro.fng<=30?'neg':macro.fng>=70?'pos':'neu'}">${macro.fng} ${fngLabelAr(macro.fngCls)||''}</span>`:'—'} · ${macro.dom!=null?'BTC '+macro.dom.toFixed(1)+'%':'—'} · ${macro.stab!=null?usd(macro.stab)+(macro.stabChg!=null?' <small class="'+cls(macro.stabChg)+'">'+sign(macro.stabChg)+usd(macro.stabChg)+'</small>':''):'—'}`,macro.capChg!=null?`السوق الكلي ${usd(macro.cap)} (${sign(macro.capChg)}${macro.capChg.toFixed(1)}% 24h)`:'')}
+    ${dRow('⛓ on-chain للبورصات 24h',chain.agg24?`ستيبل داخل <span class="pos">${usd(chain.agg24.stableIn)}</span> / خارج ${usd(chain.agg24.stableOut)} · كريبتو داخل <span class="neg">${usd(chain.agg24.cryptoIn)}</span> / خارج <span class="pos">${usd(chain.agg24.cryptoOut)}</span>`:(health.chain&&health.chain.ok===false?'❌ ما ردّ':'—'),chain.agg24?`${chain.agg24.n} حركة${chain.direct?' · مباشر (RPC عام)':''} — ستيبل داخل = قوّة شراء، كريبتو داخل = ضغط بيع`:'')}
+    ${dRow('Options (Deribit)',o?(o.proxy?`BTC كمزاج السوق`:`${o.cur||''}${o.dvol?' · DVOL '+o.dvol.now.toFixed(0):''}${o.pcr&&o.pcr.all!=null?' · P/C '+o.pcr.all.toFixed(2):''}`):(health.opts&&health.opts.ok===false?'❌':'—'),o?(o.maxPain&&o.maxPain.monthly&&o.maxPain.monthly.k?`max pain شهري ${fp(o.maxPain.monthly.k)}${o.expMove?' · حركة متوقعة ±'+usd(o.expMove.d1)+' اليوم':''}`:''):'')}
+    ${dRow('🔄 حركة الأموال',rot.rows.length?rot.verdict.split(' — ')[0]:'—',rr?`${base()} ترتيب ${rr.rank} من ${rot.rows.length}${rot.lead&&rot.lead.length?' · القياديين: '+rot.lead.slice(0,3).map(x=>x.s.replace('USDT','')).join('، '):''}`:'')}
+    ${dRow('الأخبار',hot?`<span class="neu">${hot} ⚡ مؤثر بآخر 6h</span>`:'هادية',news.items.length?`النبرة ${news.tone>0.15?'إيجابية ▲':news.tone<-0.15?'سلبية ▼':'محايدة'} · ${news.items.length} خبر`:'')}
+    ${dRow('🥇 الذهب XAU',gold.xau||gold.paxg?`$${fmt(gold.xau||gold.paxg,0)}${gold.paxgChg!=null?' <small class="'+cls(gold.paxgChg)+'">'+sign(gold.paxgChg)+gold.paxgChg.toFixed(2)+'% PAXG</small>':''}`:'—',`${gold.ratio?'BTC = '+gold.ratio.toFixed(2)+' oz':''}${gold.corr!=null?' · ارتباط '+gold.corr.toFixed(2):''}${mg?' · مزاج الذهب '+mg.label:''}`)}
+    <div class="chips" style="margin-top:8px"><button class="small" data-go="cross|macro2Card">🌍 Macro live</button><button class="small" data-go="news|fngCard">😨 F&amp;G</button><button class="small" data-go="rot|chainCard">⛓ on-chain</button><button class="small" data-go="cross|optCard">🎲 Options</button><button class="small" data-go="rot|rotCard">🔄 التدوير</button><button class="small" data-go="gold|xauRecCard">🥇 توصية الذهب</button><button class="small" data-go="news|newsCard">📰 الأخبار</button></div>`;
+}
+function renderDashAcc(){
+  const el=$('dshAccBox');if(!el)return;const all=getT(),closed=all.filter(x=>x.status==='closed'&&!x.expired&&x.risk>0),open=all.filter(x=>x.status==='open'||x.status==='be'||x.status==='pending'||x.status==='cond');
+  const R=closed.map(x=>x.pnl/x.risk),net=R.reduce((a,b)=>a+b,0),w=R.filter(r=>r>0).length,cut=Date.now()-7*86400e3,c7=closed.filter(x=>(x.closed||x.t)>cut),net7=c7.reduce((a,x)=>a+x.pnl/x.risk,0);
+  const EG=(()=>{try{return edgeState();}catch(e){return{n:0,ok:true};}})(),acc=btAccFor(PAIR,TF),S=scenBtFor(PAIR,TF),J=getJ(),jd=J.filter(e=>e.ok!==null&&e.after!=null),jok=jd.filter(e=>e.ok).length,pend=J.filter(e=>e.after==null).length;
+  const rs=(()=>{try{return riskState();}catch(e){return null;}})(),r=lastRec;
+  const scen=S&&S.stats?Object.entries(S.stats).filter(([k,v])=>v.n>=15).map(([k,v])=>({k,n:v.n,avg:v.sumR/v.n,v:scenVerdict(v).txt})).sort((a,b)=>b.avg-a.avg):[];
+  const good=scen.filter(x=>/✅/.test(x.v)).slice(0,2),bad=scen.filter(x=>/❌/.test(x.v)).slice(0,2);
+  const ov=closed.filter(x=>x.meta&&x.meta.gateOverride),ck=closed.filter(x=>x.meta&&x.meta.ckBad>0);
+  let decision='';try{decision=weeklyReport(true).split('\n').pop().replace(/^القرار:\s*/,'');}catch(e){}
+  el.innerHTML=`
+    ${dRow('الاختبار الخلفي ('+base()+' '+TF+')',acc?`<span class="${acc.acc>=58?'pos':acc.acc<=50?'neg':'neu'}">${acc.acc}%</span> <small class="muted">n=${acc.n}${acc.days?' · '+acc.days+' يوم':''}</small>`:'ما انعمل بعد',BT.last?`آخر اختبار ${BT.last.pair.replace('USDT','')} ${BT.last.tf}: ${sign(BT.last.netR)}${BT.last.netR}R`:'شغّل الاختبار بتبويب الاختبار — هو مصدر المعايرة')}
+    ${dRow('أنواع السيناريوهات (بالتاريخ)',scen.length?`${good.length?good.map(x=>`<span class="pos">${SCEN_KIND[x.k]||x.k} ${sign(x.avg)}${x.avg.toFixed(2)}R</span>`).join(' · '):'<span class="muted">ما في نوع إلو edge واضح</span>'}`:'ما انختبرت بعد',bad.length?'❌ ضعيفة: '+bad.map(x=>(SCEN_KIND[x.k]||x.k)+' '+sign(x.avg)+x.avg.toFixed(2)+'R').join(' · '):(scen.length?'الأنواع الضعيفة بتنخصم −8 من الـ Trade Score':''))}
+    ${dRow('دقة التقييمات الحيّة',jd.length?`<span class="${jok/jd.length>=0.58?'pos':jok/jd.length<=0.5?'neg':'neu'}">${Math.round(jok/jd.length*100)}%</span> <small class="muted">n=${jd.length}</small>`:'لسا',`${pend} بانتظار التقييم (بعد 4h)${autoLog?' · تسجيل تلقائي كل 30 د':' · التسجيل التلقائي مطفّى'}`)}
+    ${dRow('Edge monitor (آخر '+(QG.edgeN||20)+')',EG.n?`<span class="${EG.ok?'pos':'neg'}">${sign(EG.exp)}${EG.exp.toFixed(2)}R/صفقة</span> <small class="muted">win ${Math.round(EG.wr)}% · PF ${isFinite(EG.pf)?EG.pf.toFixed(2):'∞'} · n=${EG.n}</small>`:'—',EG.n?(EG.ok?'التوقّع إيجابي — الدخول الورقي مسموح':'🛑 التوقّع سلبي — الدخول الورقي موقّف لحد ما يتحسّن'):'بدّو صفقات مقفولة')}
+    ${dRow('الصفقات الورقية',`${open.length} مفتوحة/منتظرة · ${closed.length} مقفولة${closed.length?` · win ${Math.round(w/closed.length*100)}% · <span class="${cls(net)}">${sign(net)}${net.toFixed(1)}R</span>`:''}`,c7.length?`آخر 7 أيام: ${c7.length} صفقة · ${sign(net7)}${net7.toFixed(1)}R`:'ما في صفقات مقفولة هالأسبوع')}
+    ${dRow('الانضباط',`تجاوز البوابة ${ov.length} · دخول رغم ❌ ${ck.length}`,ov.length||ck.length?'كل تجاوز بينسجّل وبيظهر بالمراجعة الأسبوعية':'ما في تجاوزات — ممتاز')}
+    ${dRow('المخاطرة',rs?`اليوم <span class="${rs.dayPct<=-RK.day*0.6?'neg':''}">${sign(rs.dayPct)}${rs.dayPct.toFixed(2)}%</span> · الأسبوع ${sign(rs.weekPct)}${rs.weekPct.toFixed(1)}% · ${rs.openN}/${RK.open} مفتوحة`:'—',rs?(rs.pausedUntil>Date.now()?'🛑 circuit breaker شغّال':`الحدود: -${RK.day}% يوم · -${RK.week}% أسبوع · ${RK.maxPct}%/صفقة`):'')}
+    ${dRow('🚪 بوابة الجودة',QG.on?`شغّالة · Score ≥ ${QG.minScore} · جودة ≥ ${QG.minQ} · R:R ≥ ${QG.minRR}`:'مطفّية — كل التوصيات بتمرق',r&&r.gate?(r.gate.ok?'التوصية الحالية بتمرق ✓':'التوصية الحالية ما بتمرق: '+r.gate.reasons.slice(0,2).join(' · ')):'')}
+    ${dRow('📆 المراجعة الأسبوعية',decision||'—','بتنبعت لحالها كل اثنين على Telegram إذا مربوط')}
+    <div class="chips" style="margin-top:8px"><button class="small" data-go="track|anCard">📊 التحليلات</button><button class="small" data-go="bt|btCard">🧪 الاختبار الخلفي</button><button class="small" data-go="bt|btScenCard">🌳 اختبار السيناريوهات</button><button class="small" data-act="week">📆 المراجعة</button><button class="small" data-go="settings|qgCard">🚪 البوابة</button><button class="small" data-go="settings|riskCard">🛡 المخاطر</button></div>`;
+}
+function renderDashOps(){
+  const el=$('dshOpsBox');if(!el)return;const keys=[...Object.keys(H_NAME),...Object.keys(health).filter(k=>!H_NAME[k])];
+  const dot=h=>!h?'na':h.na?'na':h.off?'off':h.ok===false?'err':(Date.now()-(h.t||0)>20*60e3?'warn':'ok');
+  const EXTRA={pwa:'PWA (sw.js)',update:'التحديث التلقائي',selftest:'الفحص الذاتي',coinx:'بيانات العملات (OI/OB/Funding)',corr:'الارتباط',spotpoll:'Spot — بديل REST',futpoll:'Futures — بديل REST',obpoll:'Order book — بديل REST'};
+  const dots=keys.filter(k=>health[k]||H_NAME[k]).map(k=>{const h=health[k],d=dot(h),name=(H_NAME[k]||EXTRA[k]||k).split(' (')[0];const sub=h?(h.ok===false?(h.err||'خطأ').slice(0,50):(h.note||(h.t?ago(h.t):''))).slice(0,50):'لسا';return`<div class="hd ${d}" title="${(h&&(h.err||h.note))||''}"><i></i><span>${name}</span><small>${sub}</small></div>`;}).join('');
+  const up=health.update,st=health.selftest,fwdV=fwd&&fwd.v;
+  const chlog=CHANGELOG.slice(0,3).map(([v,t])=>`<div class="dr"><span class="dk" style="min-width:48px"><b>v${v}</b>${v===ENGINE_VERSION?' <span class="chip pos" style="padding:0 6px;font-size:10px">الحالية</span>':''}</span><span class="dv" style="text-align:right;direction:rtl;font-weight:500">${t.length>150?t.slice(0,150)+'…':t}</span></div>`).join('');
+  const AL2=[['flip','انقلاب الميل'],['fund','Funding'],['news','الأخبار']].filter(([k])=>AL[k]).map(x=>x[1]).join('، ');
+  el.innerHTML=`
+    <div class="dsub">📡 مصادر البيانات <small class="muted">أخضر = شغّال · أصفر = ما تحدّث من 20 د · أحمر = خطأ · رمادي = مطفّى/مش موجود</small></div>
+    <div class="hgrid">${dots}</div>
+    <div class="dgrid2" style="margin-top:10px">
+      <div>
+        <div class="dsub">⚙️ التشغيل</div>
+        ${dRow('Worker 24/7',WK.url?`<span class="${fwdV?(fwdV===ENGINE_VERSION?'pos':'neu'):'neu'}">مربوط${fwdV?' · محرّك v'+fwdV:''}</span>`:'<span class="neg">غير مربوط</span>',WK.url?(fwd?`forward test: ${fwd.n||0} قراءة${fwd.acc!=null?' · دقة '+fwd.acc+'%':''}${fwd.lastRun?' · آخر '+ago(fwd.lastRun):''}${fwdV&&fwdV!==ENGINE_VERSION?' · نزّل الـ worker من جديد (v'+ENGINE_VERSION+')':''}`:'جاري القراءة…'):'أعلى خطوة قيمة: نزّله من الإعدادات وانشره على Cloudflare — مراقبة وتنبيهات 24/7 بلا ما تكون الصفحة مفتوحة')}
+        ${dRow('Telegram',WK.tgToken?'<span class="pos">مربوط</span>':'<span class="muted">غير مربوط</span>',WK.tgToken?`تنبيهات: ${AL2||'—'} · تقرير الساعة ${REP.hour}:00${REP.on?'':' (مطفّى)'} · المراجعة كل اثنين`:'حطّ token وchat id بالإعدادات لتوصل التنبيهات والتقارير')}
+        ${dRow('السحابة',(()=>{try{return cloudLinked()?(cloud.user?`<span class="pos">☁️ ${cloud.user.email||'متصل'}</span>`:'مربوط — سجّل دخول'):'<span class="muted">غير مربوطة</span>';}catch(e){return'—';}})(),(()=>{try{return cloudLinked()&&cloud.user?(cloud.lastSync?'آخر مزامنة '+ago(cloud.lastSync):'—'):'كل شي محفوظ بهالمتصفّح — خود نسخة احتياطية';}catch(e){return'';}})())}
+        ${dRow('PWA',health.pwa?(health.pwa.ok?'<span class="pos">sw.js مسجَّل</span>':'<span class="muted">بلا sw.js</span>'):'—',health.pwa?(health.pwa.note||health.pwa.err||''):'')}
+        ${dRow('التسجيل التلقائي',autoLog?'<span class="pos">شغّال</span>':'<span class="neu">مطفّى</span>','كل 30 د بيسجّل القراءة وبيقيّمها بعد 4h — هيك بتنبنى دقة البرنامج')}
+      </div>
+      <div>
+        <div class="dsub">🆕 التحديثات <small class="muted">v${ENGINE_VERSION}</small></div>
+        ${dRow('النسخة',`v${ENGINE_VERSION}`,up?(up.ok===false?'<span class="neg">'+up.err+'</span>':(up.note||'')):'بيفحص كل 30 د')}
+        ${dRow('الفحص الذاتي',st?`<span class="${st.ok?'pos':'neg'}">${st.ok?'✅':'❌'} ${st.note}</span>`:'ما انعمل بهالجلسة',st?(st.ok?'كل الاختبارات نجحت · '+ago(st.t):'فشل: '+st.err):'بيفحص المحرّك والمستويات والسيناريوهات والـ checklist')}
+        ${chlog}
+      </div>
+    </div>
+    <div class="chips" style="margin-top:8px"><button class="small" data-act="upd">🔄 افحص التحديث</button><button class="small" data-act="selftest">🧪 شغّل الفحص الذاتي</button><button class="small" data-go="settings|weightsCard">📜 كل التحديثات</button><button class="small" data-go="settings|cloudCard">☁️ Worker / السحابة</button><button class="small" data-go="settings|backupCard">💾 نسخة احتياطية</button><button class="small" data-go="settings|healthCard">🩺 صحّة البيانات</button></div>`;
+}
+function renderDash(force){
+  if(!$('dshKpis'))return;const now=Date.now();const active=$('page-home')&&$('page-home').classList.contains('active');if(!active&&!force)return;
+  if(force||now-dashLast.fast>=1500){dashLast.fast=now;dSafe(renderDashKpis,'kpi');dSafe(renderDashPlan,'plan');dSafe(renderDashChart,'chart');}
+  if(force||now-dashLast.slow>=10e3){dashLast.slow=now;dSafe(renderDashFlow,'flow');dSafe(renderDashLevels,'levels');dSafe(renderDashCtx,'ctx');dSafe(renderDashAcc,'acc');dSafe(renderDashOps,'ops');}
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act],[data-dtf]');if(!b||!b.closest('#page-home'))return;
+  if(b.dataset.dtf){const t=document.querySelector(`.tf[data-tf="${b.dataset.dtf}"]`);if(t)t.click();return;}
+  const a=b.dataset.act;
+  if(a==='plan'){const g=$('goTrade');if(g)g.click();}
+  else if(a==='draw'){try{if(!DRAW.on)drawToggle(true);}catch(e){}go('detail','chartCard');}
+  else if(a==='week'){const w=$('weekBtn');if(w)w.click();}
+  else if(a==='upd'){checkUpdate(true).then(()=>renderDash(true)).catch(()=>{});toast('🔄 عم أفحص إذا في نسخة أجدد…');}
+  else if(a==='selftest'){const s=$('selfTestBtn');if(s){s.click();go('settings','selfTestCard');setTimeout(()=>renderDash(true),300);}}
+});
 
 /* ================== RISK MANAGER / PERFORMANCE ANALYTICS / VERSIONING (v8) ================== */
 /* ================== QUALITY GATE + EDGE MONITOR (v10.4) ================== */
@@ -3381,7 +3675,7 @@ function feeOf(tr,px,frac){const f=tr.fee!=null?tr.fee:(RK.fee||0);return f/100*
 function slipOf(tr){return (tr.slip!=null?tr.slip:(RK.slip||0))/100;}
 function openFill(tr,px,market){const m=tr.dir==='long'?1:-1;if(tr.fee==null)tr.fee=RK.fee||0;if(tr.slip==null)tr.slip=RK.slip||0;tr.entry=market?px*(1+m*slipOf(tr)):px;if(tr.risk>0&&Math.abs(tr.entry-tr.sl)>0)tr.qty=tr.risk/Math.abs(tr.entry-tr.sl);const f=feeOf(tr,tr.entry,1);tr.pnl=(tr.pnl||0)-f;tr.fees=(tr.fees||0)+f;}
 let RK=Object.assign({},RK_DEFAULT,(()=>{try{return JSON.parse(localStorage.getItem('fam_risk')||'{}');}catch(e){return{};}})());
-const CHANGELOG=[['11.0','الانضباط: 8 أنواع سيناريوهات (+ الكسر الكاذب للسيولة، الكسر + إعادة الاختبار) بشرط مشترك fCondHit للصفحة والـ worker · 🌳 اختبار أنواع السيناريوهات على التاريخ (بيدخل بالـ Trade Score وبيظهر تحت كل سيناريو) · 📋 checklist الأسس السبعة قبل كل دخول · مناطق 1h/4h على الشارت · فلتر سيولة (حجم 24h + spread) بالمسح والبوابة · 📆 المراجعة الأسبوعية'],['10.9','🛢️ النفط (WTI/Brent) وسندات أميركا (2Y/10Y/2s10s/TLT) بكرت Macro live + «مزاج الماكرو» (risk-on / risk-off / تضخّمي / هادي) للكريبتو وللذهب مع الأسباب والارتباطات + عامل macro (وزن 4) على 4h/1d والذهب بس · المصدر worker (stooq) أو مفتاح Alpha Vantage مجاني'],['10.8','🎨 الرسم الاحترافي على الشارت (مناطق دعم/مقاومة بقوّتها وصمودها، القاع الجديد والحد الأعلى HH/HL، الرينج/القناة، الخطة، السيولة، لوحة) من مستويات المحرّك نفسها · بدائل REST لمّا stream الفيوتشر محجوب (CVD/حيتان الفيوتشر) ودفتر الأوامر · التصفيات بحالة صادقة بدل $0 · on-chain بدون worker ولا key (RPC عام + TronGrid) · أوبشن SOL/XRP (USDC) وBTC كمزاج لباقي العملات · صحّة البيانات بتسمّي الواقع · الحدث بتوقيتك · التسجيل التلقائي شغّال افتراضياً + دقة backtest لكل عملة/إطار'],['10.7','🎯 «حدّد صفقة»: تحديث كل المصادر بـ checklist حيّ (مهلة 12 ث لكل خطوة) ثم مسح كامل وأفضل صفقة لأفضل عملة مع عمر البيانات + موبايل: header بسطرين (شريط chips بينزلق) وملخّص بسطرين بيتفتح بكبسة، والجداول ما بتنعصر (قراءة تدفّق السيولة بسطر كامل) + بوابة الجودة: الاحتمال المعايَر ≥ 55% (دون هيك «انتظار» + خطة احتياطية)، الرسوم + slippage ≤ 15% من 1R، دقة الاختبار الخلفي على العملة/الإطار ≥ 50% + معايرة لكل عملة+إطار لحالها (والمسح بيستعمل معايرة كل عملة) + «جودة البنية» بدل «الجودة» لأنها مش احتمال ربح'],['10.6','حزمة المخاطر والبنية: 🎲 تقرير Monte-Carlo (أسوأ تراجع 50/95/99%، سلاسل الخسائر، احتمال الإفلاس بـ 1%/2%، Kelly ونصّه) + 🧩 «أقصى صفقات بنفس الاتجاه» صار تعرّضاً فعلياً بالارتباط (30 يوم، الذهب = 0) + 📝 مراجعة الصفقة بعد الإقفال بوسوم وجدولها بتحليل الأداء + 📱 PWA (manifest مولَّد + sw.js اختياري بـ cache famflow-) + 🤖 فحص ذاتي تلقائي على GitHub Actions (selftest.yml + ci_selftest.mjs) + فحص تحديث النسخة كل 30 د + الصفحة بتكمّل شغل (بلا رسم) إذا مكتبة الـ chart ما تحمّلت من الـ CDN'],['10.5','حزمة الموثوقية: ☁️ مزامنة Firebase لكل سجل (LWW بـ _m، المفاتيح السرّية محلّية) + 📡 forward test 24/7 بالـ worker بنفس محرّك الصفحة (بينسحب للـ worker وقت التنزيل) مع معايرة من الواقع + رسوم وslippage على الصفقات الورقية + حارس شبكة (تزامن محدود، backoff على 429/418، مزامنة الساعة) + حارس بيانات قديمة بالبوابة + 🐞 سجل أخطاء'],['10.4','🚪 بوابة الجودة (Score ≥ 70 · جودة ≥ 7 · مصادر ≥ 90% · أطر ≥ 3 · لا حدث خلال 4 س · R:R ≥ 2) على التوصية الحيّة والمسح والذهب مع تجاوز يدوي معلَّم بالسجل + Edge monitor بيوقف الدخول لما توقّع آخر N صفقة يصير سلبي + Trade Score /100 للتوصية الحيّة + تحليل أداء الصفقات اللي تجاوزت/مرقت'],['10.3','مراجعة شاملة: إصلاح ID مكرّر (شريط المخاطر)، نافذة أحداث وحدة (pre/post) بدل وقت سلبي، subnav ظاهر، موبايل 5 تبويبات + «المزيد» وheader منكمش، reconnect/backoff + watchdog للـ sockets، fallback بالـ REST لتتبّع الصفقات، تأكيد صحّة كل خطة قبل عرضها/فتحها، dialogs جوّا البرنامج، نسخة احتياطية JSON، حفظ التسجيل التلقائي والتبويب، عناوين ملوّنة موحّدة، bidi، بوابة worker (/news /fng /gold /cg + DXY)، احتمال معايَر من الـ backtest، حدّ حيتان لكل عملة، 📡 ثقة المصادر بالتوصية، 🧪 فحص ذاتي'],['10.2','نطاق لأفضل صفقة (كل الـ watchlist / العملة المفتوحة بس / الذهب) + شرح ليش طلعت عملة غير المفتوحة + كرت توصية الذهب XAU/USD بتبويب الذهب (المحرّك كامل على PAXG، الأرقام محوّلة للأونصة + lot) + نبرة أخبار الذهب/macro بدل أخبار الكريبتو لـ PAXG'],['10.1','المسح بيستعمل كل المصادر لكل عملة (Order book، Taker/LS، Spot vs Fut، تصفيات كل السوق 1h، Coinbase premium، Funding عبر البورصات) + عامل الحيتان (آخر ساعة، وزن 6) live وبالمسح + شفافية: المصادر الناقصة لكل مرشّح مع خصم الثقة ×0.93 والـ Score −3'],['10.0','عاملين جدد live: التدوير (rot) وتدفّقات البورصات on-chain (chain) بوزن 6 لكل واحد + زر أفضل صفقة بمسح كل الـ watchlist × الأطر × السيناريوهات'],['9.0','واجهة جديدة: لوحة رئيسية ببطاقات KPI بتفتح كروتها، تنقّل من كرت لكرت، sidebar/شريط سفلي، ألوان لكل قسم — بدون أي تغيير بالمحرّك'],['8.0','Risk manager (حدود يومية/أسبوعية، circuit breaker، أقصى صفقات) + تحليل الأداء + سجل تغييرات الأوزان'],['7.0','سيناريوهات شرطية + صفقات شرطية + Setup finder + ترتيب الفرص + trailing/خروج بالوقت + التقرير الصباحي'],['6.0','عاملين جدد live: Coinbase premium وFunding عبر البورصات (وزن 6 لكل واحد) + مستويات Max pain وتجمّعات التصفية المحسوبة'],['5.0','محرّك نقي مشترك live/backtest + Spot vs Futures على تدفّق 24h بدل الـ session + الثقة بتنزل 7% لكل مصدر ناقص'],['4.0','13 عامل: الترند/الهيكل 15، التدفّق 12، نبرة الأخبار 5، F&G 4؛ Delta من 25 لـ 22']];
+const CHANGELOG=[['11.2','التصفيات 100% بلا worker: لمّا stream Binance محجوب من الشبكة، المتصفّح بيفتح stream Bybit (ثم OKX) مباشرة — تصفيات العملة المفتوحة + سياق 1h لكل الـ watchlist، مع تسمية المصدر بوضوح · تنبيه البديل مرّة وحدة بالجلسة · إعادة اتصال Binance بهدوء (كل دقيقة) لمّا تكون محجوبة'],['11.1','الداشبورد الاحترافي بالرئيسية: KPI حيّة + شارت مصغّر بالمستويات والخطة + التوصية والسيناريوهات مع checklist + السيولة والرافعة + المستويات والسيولة الراكدة + السياق (الأطر/الماكرو/on-chain/Options/الذهب) + المحاسبة والانضباط + التشغيل والتحديثات · مراجعة شاملة: شيل كود ميت، كل المراجع صارت index.html (CI/sw/worker)، جداول الموبايل بلا overflow، أزرار (i) ناقصة'],['11.0','الانضباط: 8 أنواع سيناريوهات (+ الكسر الكاذب للسيولة، الكسر + إعادة الاختبار) بشرط مشترك fCondHit للصفحة والـ worker · 🌳 اختبار أنواع السيناريوهات على التاريخ (بيدخل بالـ Trade Score وبيظهر تحت كل سيناريو) · 📋 checklist الأسس السبعة قبل كل دخول · مناطق 1h/4h على الشارت · فلتر سيولة (حجم 24h + spread) بالمسح والبوابة · 📆 المراجعة الأسبوعية'],['10.9','🛢️ النفط (WTI/Brent) وسندات أميركا (2Y/10Y/2s10s/TLT) بكرت Macro live + «مزاج الماكرو» (risk-on / risk-off / تضخّمي / هادي) للكريبتو وللذهب مع الأسباب والارتباطات + عامل macro (وزن 4) على 4h/1d والذهب بس · المصدر worker (stooq) أو مفتاح Alpha Vantage مجاني'],['10.8','🎨 الرسم الاحترافي على الشارت (مناطق دعم/مقاومة بقوّتها وصمودها، القاع الجديد والحد الأعلى HH/HL، الرينج/القناة، الخطة، السيولة، لوحة) من مستويات المحرّك نفسها · بدائل REST لمّا stream الفيوتشر محجوب (CVD/حيتان الفيوتشر) ودفتر الأوامر · التصفيات بحالة صادقة بدل $0 · on-chain بدون worker ولا key (RPC عام + TronGrid) · أوبشن SOL/XRP (USDC) وBTC كمزاج لباقي العملات · صحّة البيانات بتسمّي الواقع · الحدث بتوقيتك · التسجيل التلقائي شغّال افتراضياً + دقة backtest لكل عملة/إطار'],['10.7','🎯 «حدّد صفقة»: تحديث كل المصادر بـ checklist حيّ (مهلة 12 ث لكل خطوة) ثم مسح كامل وأفضل صفقة لأفضل عملة مع عمر البيانات + موبايل: header بسطرين (شريط chips بينزلق) وملخّص بسطرين بيتفتح بكبسة، والجداول ما بتنعصر (قراءة تدفّق السيولة بسطر كامل) + بوابة الجودة: الاحتمال المعايَر ≥ 55% (دون هيك «انتظار» + خطة احتياطية)، الرسوم + slippage ≤ 15% من 1R، دقة الاختبار الخلفي على العملة/الإطار ≥ 50% + معايرة لكل عملة+إطار لحالها (والمسح بيستعمل معايرة كل عملة) + «جودة البنية» بدل «الجودة» لأنها مش احتمال ربح'],['10.6','حزمة المخاطر والبنية: 🎲 تقرير Monte-Carlo (أسوأ تراجع 50/95/99%، سلاسل الخسائر، احتمال الإفلاس بـ 1%/2%، Kelly ونصّه) + 🧩 «أقصى صفقات بنفس الاتجاه» صار تعرّضاً فعلياً بالارتباط (30 يوم، الذهب = 0) + 📝 مراجعة الصفقة بعد الإقفال بوسوم وجدولها بتحليل الأداء + 📱 PWA (manifest مولَّد + sw.js اختياري بـ cache famflow-) + 🤖 فحص ذاتي تلقائي على GitHub Actions (selftest.yml + ci_selftest.mjs) + فحص تحديث النسخة كل 30 د + الصفحة بتكمّل شغل (بلا رسم) إذا مكتبة الـ chart ما تحمّلت من الـ CDN'],['10.5','حزمة الموثوقية: ☁️ مزامنة Firebase لكل سجل (LWW بـ _m، المفاتيح السرّية محلّية) + 📡 forward test 24/7 بالـ worker بنفس محرّك الصفحة (بينسحب للـ worker وقت التنزيل) مع معايرة من الواقع + رسوم وslippage على الصفقات الورقية + حارس شبكة (تزامن محدود، backoff على 429/418، مزامنة الساعة) + حارس بيانات قديمة بالبوابة + 🐞 سجل أخطاء'],['10.4','🚪 بوابة الجودة (Score ≥ 70 · جودة ≥ 7 · مصادر ≥ 90% · أطر ≥ 3 · لا حدث خلال 4 س · R:R ≥ 2) على التوصية الحيّة والمسح والذهب مع تجاوز يدوي معلَّم بالسجل + Edge monitor بيوقف الدخول لما توقّع آخر N صفقة يصير سلبي + Trade Score /100 للتوصية الحيّة + تحليل أداء الصفقات اللي تجاوزت/مرقت'],['10.3','مراجعة شاملة: إصلاح ID مكرّر (شريط المخاطر)، نافذة أحداث وحدة (pre/post) بدل وقت سلبي، subnav ظاهر، موبايل 5 تبويبات + «المزيد» وheader منكمش، reconnect/backoff + watchdog للـ sockets، fallback بالـ REST لتتبّع الصفقات، تأكيد صحّة كل خطة قبل عرضها/فتحها، dialogs جوّا البرنامج، نسخة احتياطية JSON، حفظ التسجيل التلقائي والتبويب، عناوين ملوّنة موحّدة، bidi، بوابة worker (/news /fng /gold /cg + DXY)، احتمال معايَر من الـ backtest، حدّ حيتان لكل عملة، 📡 ثقة المصادر بالتوصية، 🧪 فحص ذاتي'],['10.2','نطاق لأفضل صفقة (كل الـ watchlist / العملة المفتوحة بس / الذهب) + شرح ليش طلعت عملة غير المفتوحة + كرت توصية الذهب XAU/USD بتبويب الذهب (المحرّك كامل على PAXG، الأرقام محوّلة للأونصة + lot) + نبرة أخبار الذهب/macro بدل أخبار الكريبتو لـ PAXG'],['10.1','المسح بيستعمل كل المصادر لكل عملة (Order book، Taker/LS، Spot vs Fut، تصفيات كل السوق 1h، Coinbase premium، Funding عبر البورصات) + عامل الحيتان (آخر ساعة، وزن 6) live وبالمسح + شفافية: المصادر الناقصة لكل مرشّح مع خصم الثقة ×0.93 والـ Score −3'],['10.0','عاملين جدد live: التدوير (rot) وتدفّقات البورصات on-chain (chain) بوزن 6 لكل واحد + زر أفضل صفقة بمسح كل الـ watchlist × الأطر × السيناريوهات'],['9.0','واجهة جديدة: لوحة رئيسية ببطاقات KPI بتفتح كروتها، تنقّل من كرت لكرت، sidebar/شريط سفلي، ألوان لكل قسم — بدون أي تغيير بالمحرّك'],['8.0','Risk manager (حدود يومية/أسبوعية، circuit breaker، أقصى صفقات) + تحليل الأداء + سجل تغييرات الأوزان'],['7.0','سيناريوهات شرطية + صفقات شرطية + Setup finder + ترتيب الفرص + trailing/خروج بالوقت + التقرير الصباحي'],['6.0','عاملين جدد live: Coinbase premium وFunding عبر البورصات (وزن 6 لكل واحد) + مستويات Max pain وتجمّعات التصفية المحسوبة'],['5.0','محرّك نقي مشترك live/backtest + Spot vs Futures على تدفّق 24h بدل الـ session + الثقة بتنزل 7% لكل مصدر ناقص'],['4.0','13 عامل: الترند/الهيكل 15، التدفّق 12، نبرة الأخبار 5، F&G 4؛ Delta من 25 لـ 22']];
 function dayKey(t){const d=new Date(t);return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();}
 function weekKey(t){const d=new Date(t);const day=(d.getDay()+6)%7;const m=new Date(d);m.setDate(d.getDate()-day);return m.getFullYear()+'-'+(m.getMonth()+1)+'-'+m.getDate();}
 function riskState(){
@@ -3428,8 +3722,9 @@ $('tRisk').onclick=()=>showTab('settings');
 function dlText(name,text,mime){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:mime||'text/plain;charset=utf-8'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000);}
 /* v10.5: المحرّك نفسه (الدوال النقية) بينسحب من الصفحة وبينضاف لملف الـ worker وقت التنزيل — نسخة وحدة من المنطق */
 function engineSource(){const fns=[parseK,ema,fRegime,fAtr,fSwing,fPivots,fStructure,fShock,fAgg,fMini,fTrend,fOIState,fFlowFactor,fFactors,fConf,fBias,roundLevels,fLevels,fPlan,planValid,fQuality,qualityScore,evPhase,fCondHit];const arrows={sign,clamp,fmt};
-  return `\n/* ===== ENGINE v${ENGINE_VERSION} — auto-extracted from fam_flow.html on ${new Date().toISOString()} — don't edit here: edit the page and re-download ===== */\nconst ENGINE=(()=>{\nconst W_DEFAULT=${JSON.stringify(W_DEFAULT)};const W_NAME=${JSON.stringify(W_NAME)};const activeCal=()=>null;const EV_PRE_H=${EV_PRE_H},EV_POST_H=${EV_POST_H};const SCEN_KIND=${JSON.stringify(SCEN_KIND)};\n${Object.entries(arrows).map(([k,f])=>'const '+k+'='+f.toString()+';').join('\n')}\n${fns.map(f=>f.toString()).join('\n')}\nreturn{v:'${ENGINE_VERSION}',W_DEFAULT,W_NAME,parseK,ema,fRegime,fAtr,fSwing,fPivots,fStructure,fShock,fAgg,fMini,fTrend,fOIState,fFlowFactor,fFactors,fConf,fBias,fLevels,fPlan,planValid,fQuality,qualityScore,fCondHit,SCEN_KIND,sign,clamp,fmt};\n})();\n`;}
+  return `\n/* ===== ENGINE v${ENGINE_VERSION} — auto-extracted from index.html (FAM Flow) on ${new Date().toISOString()} — don't edit here: edit the page and re-download ===== */\nconst ENGINE=(()=>{\nconst W_DEFAULT=${JSON.stringify(W_DEFAULT)};const W_NAME=${JSON.stringify(W_NAME)};const activeCal=()=>null;const EV_PRE_H=${EV_PRE_H},EV_POST_H=${EV_POST_H};const SCEN_KIND=${JSON.stringify(SCEN_KIND)};\n${Object.entries(arrows).map(([k,f])=>'const '+k+'='+f.toString()+';').join('\n')}\n${fns.map(f=>f.toString()).join('\n')}\nreturn{v:'${ENGINE_VERSION}',W_DEFAULT,W_NAME,parseK,ema,fRegime,fAtr,fSwing,fPivots,fStructure,fShock,fAgg,fMini,fTrend,fOIState,fFlowFactor,fFactors,fConf,fBias,fLevels,fPlan,planValid,fQuality,qualityScore,fCondHit,SCEN_KIND,sign,clamp,fmt};\n})();\n`;}
 $('dlWorker').onclick=()=>dlText('fam_flow_worker.js',$('workerSrc').textContent+engineSource(),'application/javascript');
+if($('wkPhoneV'))$('wkPhoneV').textContent=ENGINE_VERSION;
 /* ================== v10.6: Monte-Carlo risk report ================== */
 const MC={last:null,src:''};
 function mcHist(dd,step){const bins=[];const top=Math.max(...dd);const max=Math.min(40,Math.max(step,Math.ceil(top/step)*step));for(let a=0;a<max;a+=step)bins.push({a,b:a+step,n:0});let over=0;for(const v of dd){const i=Math.floor(v/step);if(i<bins.length)bins[i].n++;else over++;}if(over)bins.push({a:max,b:Infinity,n:over});return bins;}
@@ -3472,7 +3767,7 @@ function corrMaybe(){if(Date.now()-_corrTry<600e3)return;const syms=[...new Set(
 function renderCorr(){const box=$('corrBox');if(!box)return;const syms=CORR.syms||[];const key=CORR.t+'|'+syms.join(',')+'|'+RK.same;if(box.dataset.key===key)return;box.dataset.key=key;const sh=x=>x.replace('USDT','');
   if(!syms.length)box.innerHTML='<div class="mini muted">🧩 الارتباط بين عملات الـ watchlist (30 يوم): لسا ما انحسب — <button class="small corrRefresh">احسب الآن</button></div>';
   else{const cell=v=>{if(v==null)return'<td class="muted">—</td>';const col=v>=0.7?'rgba(239,68,68,.35)':v>=0.4?'rgba(245,158,11,.3)':v>-0.4?'rgba(34,197,94,.22)':'rgba(59,130,246,.3)';return`<td style="background:${col}">${v.toFixed(2)}</td>`;};
-    box.innerHTML=`<div class="mini" style="margin-bottom:4px"><b>🧩 ارتباط العوائد اليومية (30 يوم)</b> — أحمر ≥ 0.7 = نفس الصفقة عملياً · أخضر &lt; 0.4 = تنويع حقيقي <button class="small corrRefresh" style="margin-inline-start:6px">تحديث</button> <span class="muted">${ago(CORR.t)}</span></div><div style="overflow:auto"><table class="corrT"><thead><tr><th></th>${syms.map(x=>'<th>'+sh(x)+'</th>').join('')}</tr></thead><tbody>${syms.map(a=>`<tr><th>${sh(a)}</th>${syms.map(b=>a===b?'<td class="muted">1</td>':cell(CORR.m[corrKey(a,b)])).join('')}</tr>`).join('')}</tbody></table></div><div class="mini muted" style="margin-top:4px">«أقصى صفقات بنفس الاتجاه» (${RK.same}) صار <b>تعرّض فعلي</b>: 1 + مجموع ارتباط الصفقة الجديدة مع المفتوحة بنفس الاتجاه. عملة بلا بيانات = 0.7، الذهب مع الكريبتو = 0.</div>`;}
+    box.innerHTML=`<div class="mini" style="margin-bottom:4px"><b>🧩 ارتباط العوائد اليومية (30 يوم)</b><button class="info" data-i="corr" style="margin-inline-start:0">i</button> — أحمر ≥ 0.7 = نفس الصفقة عملياً · أخضر &lt; 0.4 = تنويع حقيقي <button class="small corrRefresh" style="margin-inline-start:6px">تحديث</button> <span class="muted">${ago(CORR.t)}</span></div><div style="overflow:auto"><table class="corrT"><thead><tr><th></th>${syms.map(x=>'<th>'+sh(x)+'</th>').join('')}</tr></thead><tbody>${syms.map(a=>`<tr><th>${sh(a)}</th>${syms.map(b=>a===b?'<td class="muted">1</td>':cell(CORR.m[corrKey(a,b)])).join('')}</tr>`).join('')}</tbody></table></div><div class="mini muted" style="margin-top:4px">«أقصى صفقات بنفس الاتجاه» (${RK.same}) صار <b>تعرّض فعلي</b>: 1 + مجموع ارتباط الصفقة الجديدة مع المفتوحة بنفس الاتجاه. عملة بلا بيانات = 0.7، الذهب مع الكريبتو = 0.</div>`;}
   const b=box.querySelector('.corrRefresh');if(b)b.onclick=()=>{b.textContent='…';loadCorr(true);};}
 /* ================== v10.6: post-trade review ================== */
 const REVIEW_TAGS=['دخول صح','دخول بكير (مطاردة)','stop قريب','خروج بكير','السوق انقلب','خبر مفاجئ','تجاوزت القواعد','صبرت عالخطة'];
@@ -3503,7 +3798,7 @@ async function checkUpdate(manual){const info=$('updInfo');if(!/^https?:$/.test(
   catch(e){health.update={off:true,t:Date.now(),note:'ما قدرت أفحص ('+String(e.message||e).slice(0,40)+')'};if(info)info.textContent='ما قدرت أفحص — '+String(e.message||e).slice(0,60);renderHealth();}}
 if($('dlCiYml')){$('dlCiYml').onclick=()=>{dlText('selftest.yml',$('ciYmlSrc').textContent.trim()+'\n','text/yaml;charset=utf-8');$('ciMsg').textContent='ارفعه بالمسار .github/workflows/selftest.yml';};
   $('dlCiJs').onclick=()=>{dlText('ci_selftest.mjs',$('ciJsSrc').textContent.trim()+'\n','application/javascript');$('ciMsg').textContent='ارفعه بالمسار ci/ci_selftest.mjs';};
-  $('dlSw').onclick=()=>{dlText('sw.js',$('swSrc').textContent.trim()+'\n','application/javascript');$('ciMsg').textContent='ارفعه جنب fam_flow.html (نفس المجلّد) — وبعدها أعد تحميل الصفحة';};
+  $('dlSw').onclick=()=>{dlText('sw.js',$('swSrc').textContent.trim()+'\n','application/javascript');$('ciMsg').textContent='ارفعه جنب index.html (نفس المجلّد) — وبعدها أعد تحميل الصفحة';};
   $('updCheck').onclick=async()=>{$('ciMsg').textContent='عم أفحص…';await checkUpdate(true);$('ciMsg').textContent='';};}
 $('bkExport').onclick=()=>{const o={app:'FAM Flow',v:ENGINE_VERSION,t:Date.now(),keys:{}};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.startsWith('fam_'))o.keys[k]=localStorage.getItem(k);}dlText('fam_flow_backup_'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify(o),'application/json');$('bkMsg').textContent='نزّلت النسخة ('+Object.keys(o.keys).length+' مفتاح).';};
 $('bkImportBtn').onclick=()=>$('bkFile').click();
@@ -4134,7 +4429,7 @@ $('btOpt').onclick=async()=>{
   const trCur=btSimulate(W,prm,[warm,split]),teCur=btSimulate(W,prm,[split,N]),trNew=btSimulate(best,prm,[warm,split]),teNew=btSimulate(best,prm,[split,N]);
   const cell=r=>`${r.n} صفقة · ${r.winrate.toFixed(0)}% · <b class="${cls(r.netR)}">${sign(r.netR)}${r.netR.toFixed(1)}R</b> · DD ${r.maxDD.toFixed(1)}`;
   const better=teNew.netR>teCur.netR&&teNew.n>=10,changed=keys.filter(k=>best[k]!==W[k]);
-  $('btOptOut').innerHTML=`<table><thead><tr><th></th><th>تدريب (أول 70%)</th><th>اختبار (آخر 30% ما شافها)</th></tr></thead><tbody><tr><td>الأوزان الحالية</td><td>${cell(trCur)}</td><td>${cell(teCur)}</td></tr><tr><td>الأوزان المقترحة</td><td>${cell(trNew)}</td><td>${cell(teNew)}</td></tr></tbody></table>
+  $('btOptOut').innerHTML=`<div style="overflow:auto"><table><thead><tr><th></th><th>تدريب (أول 70%)</th><th>اختبار (آخر 30% ما شافها)</th></tr></thead><tbody><tr><td>الأوزان الحالية</td><td>${cell(trCur)}</td><td>${cell(teCur)}</td></tr><tr><td>الأوزان المقترحة</td><td>${cell(trNew)}</td><td>${cell(teNew)}</td></tr></tbody></table></div>
    <div class="mini" style="margin-top:6px;direction:ltr">${keys.map(k=>`${k}: ${W[k]}→<b class="${best[k]!==W[k]?'neu':''}">${best[k]}</b>`).join(' · ')}</div>
    <div class="note">${!changed.length?'ما لقى أوزان أحسن من الحالية على التدريب — الحالي منيح.':better?'<b class="pos">المقترح أحسن على البيانات اللي ما شافها</b> — فيك تعتمده، وسجّل التاريخ والسبب بملاحظة بالسجل. ':'<b class="neg">المقترح ما حسّن على بيانات الاختبار</b> — غالباً overfitting، خلّي الحالي. '}تدريب على ${split-warm} شمعة واختبار على ${N-split}. أقل من 20 صفقة بالاختبار = ما تعتمد.</div>
    ${changed.length?'<div class="btnrow" style="margin-top:6px"><button class="small primary" id="btApply">اعتمد الأوزان المقترحة</button></div>':''}`;
@@ -4232,7 +4527,7 @@ let fwd=null;
 async function loadForward(){if(!WK.url){hNA('forward');renderForward();return;}try{const d=await wkFetch('/forward');if(!d||d.error)throw new Error(d&&d.error||'ما في بيانات');fwd=d;hOK('forward',{note:d.n?`${d.n} قراءة مقيّمة · دقة ${d.acc}%`:(d.err?'❌ '+d.err:'عم يجمّع — '+d.total+' قراءة')});
   if(d.n>=100&&Array.isArray(d.buckets)){CALIB_FWD={t:d.lastRun||Date.now(),pair:'watchlist',tf:'15m',days:d.first?Math.round((Date.now()-d.first)/86400e3):0,n:d.n,acc:d.acc,map:d.buckets.map(b=>({a:b.a,b:b.b,n:b.n,act:b.act})),src:'forward'};localStorage.setItem('fam_calib_fwd',JSON.stringify(CALIB_FWD));renderCalInfo();}}catch(e){hErr('forward',e);}renderForward();}
 function renderForward(){const k=(t,v,i,c)=>`<div><small>${t}</small><b class="${c||''}">${v}</b>${i?`<i>${i}</i>`:''}</div>`;const el=$('fwdKpi');if(!el)return;
-  if(!WK.url){el.innerHTML=k('Forward test','بدّو worker','حطّ رابط الـ worker بالإعدادات، نزّله من جديد (v10.7) وأعد النشر');return;}
+  if(!WK.url){el.innerHTML=k('Forward test','بدّو worker','حطّ رابط الـ worker بالإعدادات، نزّله من جديد (آخر نسخة) وأعد النشر');return;}
   if(!fwd){el.innerHTML=k('Forward test','جاري التحميل…','');return;}
   const d=fwd;el.innerHTML=k('قراءات مقيّمة',d.n,`${d.pending} بانتظار 4h · ${d.neutral} محايدة · ${d.total} إجمالي`)+k('دقة الاتجاه (4h)',d.acc!=null?d.acc+'%':'—',d.n<30?'لسا قليل — بدّو 100 ليكون له معنى':d.acc>=58?'أحسن من العملة بوضوح':d.acc<=50?'ما في edge — راجع الأوزان':'أحسن من العملة شوي',d.acc==null?'':d.acc>=58?'pos':d.acc<=50?'neg':'neu')+k('المحرّك بالـ worker',d.v?'v'+d.v:'❌ غير موجود',d.v?(d.v===ENGINE_VERSION?'مطابق للصفحة':'الصفحة v'+ENGINE_VERSION+' — نزّل الـ worker من جديد'):'نزّل الـ worker من الإعدادات وأعد النشر',d.v===ENGINE_VERSION?'pos':'neg')+k('آخر قراءة',d.lastRun?ago(d.lastRun):'—',d.first?'بدأ '+ago(d.first):'')+(d.err?k('خطأ',d.err.slice(0,40),'','neg'):'');
   const tb=(title,rows)=>`<div class="mini" style="margin-bottom:4px"><b>${title}</b></div><table><thead><tr><th>الفئة</th><th>n</th><th>الدقة</th></tr></thead><tbody>${rows.map(([kk,n,acc])=>`<tr><td>${kk}</td><td>${n}</td><td class="${acc==null?'':acc>=58?'pos':acc<=50?'neg':''}">${acc==null?'—':acc+'%'}</td></tr>`).join('')}</tbody></table>`;
@@ -4365,7 +4660,7 @@ try{if(new URLSearchParams(location.search).get('selftest'))setTimeout(()=>$('se
 function renderPairSel(){const all=[...new Set([PAIR,...WATCH])];$('pairSel').innerHTML=all.map(s=>`<option value="${s}" ${s===PAIR?'selected':''}>${symLabel(s)}</option>`).join('')+'<option value="__custom">+ عملة تانية…</option>';}
 $('pairSel').onchange=async e=>{if(e.target.value==='__custom'){const v=((await ui.prompt('اكتب رمز العملة (مثلاً XRP — وللذهب اكتب XAU أو PAXG):','','عملة تانية'))||'').trim().toUpperCase();renderPairSel();if(v){const n=normSym(v);if(n==='PAXGUSDT'&&!v.startsWith('PAXG'))toast('🥇 الذهب على Binance = PAXG/USDT (أونصة ذهب مرمّزة) — انفتح بدل '+v);setPair(n);}}else setPair(e.target.value);};
 $('wlInput').value=WATCH.map(s=>s.replace('USDT','')).join(', ');
-$('wlSave').onclick=()=>{WATCH=[...new Set($('wlInput').value.split(',').map(normSym).filter(Boolean))];localStorage.setItem('fam_watch',JSON.stringify(WATCH));renderPairSel();loadWatch();openWhaleAll();loadCoinX(WATCH,true).catch(()=>{});};
+$('wlSave').onclick=()=>{WATCH=[...new Set($('wlInput').value.split(',').map(normSym).filter(Boolean))];localStorage.setItem('fam_watch',JSON.stringify(WATCH));renderPairSel();loadWatch();openWhaleAll();loadCoinX(WATCH,true).catch(()=>{});try{liqAltSync();}catch(e){}};
 $('sndBtn').textContent=SOUND?'on':'off';$('sndBtn').onclick=()=>{SOUND=!SOUND;localStorage.setItem('fam_sound',SOUND?'on':'off');$('sndBtn').textContent=SOUND?'on':'off';};
 $('whaleMin').value=localStorage.getItem('fam_whaleMin')||'100000';$('whaleEcho').textContent=fmt(+$('whaleMin').value,0);
 $('whaleMin').oninput=()=>{localStorage.setItem('fam_whaleMin',$('whaleMin').value);$('whaleEcho').textContent=fmt(+$('whaleMin').value,0);renderWhale1h();};
@@ -4381,6 +4676,7 @@ function setPair(p){
   $('liqFeed').innerHTML='';$('whaleFeed').innerHTML='';['liqLong','liqShort','whaleBuy','whaleSell'].forEach(i=>$(i).textContent='$0');['cvdSpot','cvdFut','leader','cvdBoth','liqS','whaleS','oiStateS','fundingS','flow1hS','flow4hS','oi24S','rvolS'].forEach(i=>$(i).textContent='—');
   fut={oi:null,oiHist:[],funding:null,lsr:null,topLsr:null,taker:null};mtf={};mtfC={};
   futOK=true;premium=null;flows={spot:{},fut:{},oiv:{},rvol:null,oiHist5:[]};cvdHist={fut:[]};fundHist=[];lsHist={g:[],t:[],k:[]};dayInfo=null;dayATR=0;todayRange=null;vwap=null;lv=[];lastRec=null;lastSig=null;
+  try{liqAltSync();}catch(e){}
   $('futNote').textContent='';wkPushed={liqL:0,liqS:0,whB:0,whS:0};wkState=null;$('liq24W').textContent='—';$('whale24W').textContent='—';cross.multi=null;cross.opt=null;cross.heat=null;
   reload();
 }

@@ -1,0 +1,26 @@
+name = "fam-flow"
+main = "fam_flow_worker.js"
+compatibility_date = "2026-01-01"
+
+[triggers]
+crons = ["*/5 * * * *", "*/10 * * * *", "2-57/5 * * * *"]   # alerts+scenarios every 5 min · on-chain every 10 min · forward test every 5 min (offset by 2)
+
+[[kv_namespaces]]
+binding = "FLOW_KV"
+id = "PUT_YOUR_KV_NAMESPACE_ID_HERE"
+
+[vars]
+# ≤ 8 symbols on the free plan (50 subrequests per run)
+SYMBOLS = "BTCUSDT,ETHUSDT,SOLUSDT,BNBUSDT,XRPUSDT,PAXGUSDT"
+# on-chain: minimum transfer to record / to alert (USD)
+CHAIN_MIN = "1000000"
+CHAIN_ALERT = "25000000"
+# REPORT_UTC = "5"   # morning report hour (UTC)
+
+# Secrets (terminal, never commit):
+#   wrangler secret put TG_TOKEN     # Telegram bot token
+#   wrangler secret put TG_CHAT      # your chat id
+#   wrangler secret put FAM_KEY      # any long random string; put the same one in the page settings
+#   wrangler secret put ES_KEY       # Etherscan API key (on-chain Ethereum)
+#   wrangler secret put TRON_KEY     # TronGrid API key (optional, raises rate limits)
+#   wrangler secret put CG_KEY       # CoinGecko demo key (optional — used by the /cg gateway endpoint)
