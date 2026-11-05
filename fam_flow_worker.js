@@ -297,7 +297,7 @@ export default{
   async scheduled(ev,env,ctx){ctx.waitUntil(ev.cron&&ev.cron.startsWith('*/10')?chainCron(env):ev.cron&&ev.cron.startsWith('2-57/5')?forwardStep(env):cron(env));}
 };
 
-/* ===== ENGINE v11.3 — auto-extracted from index.html (FAM Flow) on 2026-11-03T13:50:54.251Z — don't edit here: edit the page and re-download ===== */
+/* ===== ENGINE v11.4 — auto-extracted from index.html (FAM Flow) on 2026-11-05T11:04:08.418Z — don't edit here: edit the page and re-download ===== */
 const ENGINE=(()=>{
 const W_DEFAULT={"delta":22,"mom":10,"trend":15,"div":15,"oi":15,"flow":12,"fund":10,"sf":10,"taker":8,"ob":6,"top":6,"liq":5,"news":5,"fng":4,"prem":6,"xfund":6,"rot":6,"chain":6,"whale":6,"macro":4};const W_NAME={"delta":"ضغط الـ market orders (Delta 10 شمعات)","mom":"الزخم (حركة آخر 3 شموع × ATR + delta)","trend":"الترند والهيكل (EMA + MTF)","div":"Divergence سعر/Delta","oi":"OI مع السعر","flow":"تدفّق السيولة 1h/4h (Spot+Fut)","fund":"Funding rate","sf":"Spot vs Futures (تدفّق 24h)","taker":"Taker Buy/Sell (Futures)","ob":"Order book imbalance","top":"كبار المتداولين vs العامة","liq":"Liquidations (session)","news":"نبرة الأخبار (آخر 6 ساعات)","fng":"Fear & Greed","prem":"Coinbase premium (طلب أميركي)","xfund":"Funding عبر البورصات (مرجّح بالـ OI)","rot":"التدوير — المال داخل على هالعملة نسبةً للسوق","chain":"تدفّقات البورصات on-chain (ستيبل داخل vs كريبتو داخل)","whale":"الحيتان — صفقات كبيرة آخر ساعة (شراء vs بيع)","macro":"مزاج الماكرو (الدولار، العوائد، VIX، S&P، النفط) — على 4h/1d والذهب بس"};const activeCal=()=>null;const EV_PRE_H=2,EV_POST_H=0.5;const SCEN_KIND={"breakUp":"كسر للفوق","breakDown":"كسر للتحت","rejectUp":"رفض مقاومة","bounceDown":"ارتداد من دعم","sweepLow":"كسر كاذب (سيولة) ↑","sweepHigh":"كسر كاذب (سيولة) ↓","retestUp":"كسر + إعادة اختبار ↑","retestDown":"كسر + إعادة اختبار ↓"};
 const sign=n=>n>0?'+':'';
@@ -488,6 +488,8 @@ function fPlan(c){
     const r2=(tps[1].p-entry)*m/r,t3=pick(Math.max(3,r2+0.8));tps.push(t3?{p:t3.p,name:t3.name}:{p:entry+m*r*Math.max(3,r2+1),name:Math.max(3,r2+1).toFixed(1)+'R'});
     R.tps=tps;
   }
+  /* v11.4: الدخول Market بدّو شمعة تأكيد مقفولة بنفس الاتجاه مع delta موافق — غير هيك انتظار (الـ Limit ما بيحتاج) */
+  if(R.mode==='market'&&c.last){const lc=c.last,okC=(lc.close-lc.open)*m>0&&lc.delta*m>=0;if(!okC)return WAIT('انتظار — بانتظار شمعة تأكيد',`آخر شمعة مقفولة ${(lc.close-lc.open)*m>0?'بنفس الاتجاه بس الـ delta عكسه':'عكس الاتجاه'} — الدخول Market بدّو شمعة ${dir==='long'?'خضرا':'حمرا'} مقفولة مع delta ${dir==='long'?'موجب':'سالب'}؛ الخطة جاهزة: ${dir.toUpperCase()} ${fp(R.entry)} · stop ${fp(R.sl)}`,{confirmWait:true,draft:{dir,entry:R.entry,sl:R.sl,tps:R.tps,setup}});}
   R.setup=setup;const r=Math.abs(R.entry-R.sl);R.r=r;R.tps.forEach(t=>t.r=(t.p-R.entry)*m/r);
   const pv=planValid(R);if(!pv.ok)return{wait:true,invalid:true,verdict:'انتظار — أرقام غير متناسقة',why:['البرنامج رفض الخطة: '+pv.why+' — غالباً لحظة بيانات غير متناسقة (سعر live مقابل شموع قديمة). بتتصلّح لحالها مع الشمعة الجاية'],watch:R.watch||''};
   return R;
@@ -543,5 +545,5 @@ function fCondHit(kind,L,c,prev,avgV,a,st){
     if(st.n>12){st.broke=false;st.n=0;}return{hit:false,st};}
   return{hit:false,st};
 }
-return{v:'11.3',W_DEFAULT,W_NAME,parseK,ema,fRegime,fAtr,fSwing,fPivots,fStructure,fShock,fThrust,fAgg,fMini,fTrend,fOIState,fFlowFactor,fFactors,fConf,fBias,fLevels,fPlan,planValid,fQuality,qualityScore,fCondHit,SCEN_KIND,sign,clamp,fmt};
+return{v:'11.4',W_DEFAULT,W_NAME,parseK,ema,fRegime,fAtr,fSwing,fPivots,fStructure,fShock,fThrust,fAgg,fMini,fTrend,fOIState,fFlowFactor,fFactors,fConf,fBias,fLevels,fPlan,planValid,fQuality,qualityScore,fCondHit,SCEN_KIND,sign,clamp,fmt};
 })();
